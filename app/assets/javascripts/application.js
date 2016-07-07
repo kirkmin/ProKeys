@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
+//= require interactive_bg
 //= require ProKeys
 //= require_tree ../templates
 //= require_tree ./utils

@@ -16,3 +16,21 @@
 
 @import "bootstrap";
 @import "font-awesome";
+
+.bg {
+	position: absolute;
+	min-height: 110% !important;
+	width: 110%;
+}
+
+.wrapper {
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto; 
+	overflow: hidden;
+}
+
+.ibg-bg {
+	position: absolute;
+	z-index: -1;
+}
