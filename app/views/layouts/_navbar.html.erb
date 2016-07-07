@@ -1,0 +1,67 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container container-fluid">
+		<ul class="nav navbar-nav navbar-left">
+			<% if signed_in? %>
+				<li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-success navbar-btn" %></li>
+			<% else %>
+				<li>
+					<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#logIn">
+					  Log In
+					</button>
+				</li>
+				<li>
+					<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#signUp">
+					  Sign Up
+					</button>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <h4 class="modal-title" id="myModalLabel">Log In</h4>
+	  </div>
+		<form class="sign-in" action="/session" method="post" class="form-signin">
+	      <div class="modal-body">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input id="username" name="user[username]" placeholder="Username" type="text" autofocus>
+				<input id="password" name="user[password]" placeholder="Password" type="password">
+	      </div>
+      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <input class="btn btn-success submit" type="submit" id="login" value="Login »">
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+		<form class="sign-up" action="/users" method="post" class="form-signin">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input id="username" name="user[username]" placeholder="Username" type="text" autofocus>
+			<input id="password" name="user[password]" placeholder="Password" type="password">
+      	  </div>
+      <div class="modal-footer">
+        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<input class="btn btn-success" type="submit" id="sign-up" value="Sign Up »">
+	    </form>
+      </div>
+    </div>
+  </div>
+</div>
