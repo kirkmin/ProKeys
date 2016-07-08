@@ -17,20 +17,19 @@
 @import "bootstrap";
 @import "font-awesome";
 
+html, body {
+	height: 100%;
+}
+
 .bg {
-	position: absolute;
-	min-height: 100% !important;
+	background-image: image-url("background.jpg");
+	background-size: 110% 110%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+
+.note {
+	height: 50%;
 	width: 100%;
-}
-
-.wrapper {
-	height: auto !important;
-	height: 110%;
-	margin: 0 auto; 
-	overflow: hidden;
-}
-
-.ibg-bg {
-	position: absolute;
-	z-index: -1;
 }

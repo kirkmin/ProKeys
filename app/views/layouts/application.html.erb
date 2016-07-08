@@ -7,14 +7,16 @@
  	<%= csrf_meta_tags %>
 </head>
 <body>
-	<article class="wrapper bg" data-ibg-bg="<%= image_url("background.jpg") %>">
-
-	<%= render partial: "layouts/navbar" %>
-	<%= render partial: "layouts/error" %>
+	<div class="bg">
 		
-		<%= yield %>
 
+		<%= render partial: "layouts/navbar" %>
+		<%= render partial: "layouts/error" %>
+
+		<div class="notes"></div>
+
+		<%= yield %>
 	<!-- <a href="http://www.freepik.com">Designed by Freepik</a> -->
-	</article>
+	</div>
 </body>
 </html>
