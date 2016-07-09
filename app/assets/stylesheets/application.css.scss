@@ -29,7 +29,20 @@ html, body {
 	height: 100%;
 }
 
-.note {
+.notesContainer {
 	height: 50%;
 	width: 100%;
+}
+
+.notes {
+	position: relative;
+	float: right;
+	height: 100%;
+	width: 33%;
+}
+
+.note {
+	position: absolute;
+	height: 25%;
+	width: 13%;
 }

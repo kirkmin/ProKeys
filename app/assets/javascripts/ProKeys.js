@@ -14,42 +14,49 @@ window.ProKeys = {
 
 $(document).ready(function(){
   $(".bg").mousemove(function(e){
-    var amountMovedX = (e.pageX * -1 / 10);
-    var amountMovedY = (e.pageY * -1 / 10);
+    var amountMovedX = (e.pageX * -1 / 30);
+    var amountMovedY = (e.pageY * -1 / 30);
     $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
   });
-  loopNote();
+  loopNote(1);
+  loopNote(2);
+  loopNote(3);
 });
 
 
 function animateNote() {
- $( ".note" ).animate(
+  var height = $note.height() * 2,
+      width = $note.width() * 2
+ $(".note").animate(
     {
-      height: 100,
-      width: 100,
+      height: height,
+      width: width,
       opacity: 0,
     },
-    1500,
+    1200,
     function() { $(this).remove(); }
   )
 };
 
-function createNote() {
+function createNote(num) {
+  var top = Math.floor(Math.random() * 75),
+      left = Math.floor(Math.random() * 87),
+      num = Math.floor(Math.random() * 5) + 1
   $note = $( '<img />', {
     class: 'note',
-    src: "assets/eighth.png",
-    height: '50',
-    width: '50'
+    src: "assets/note" + num + ".png",
+    style: "left:" + left + "%; top:" + top + "%;"
   });
-  $(".notes").append( $note );
+  var name = "#notes" + num
+  $(name).append( $note );
+  animateNote();
 };
 
-function loopNote() {
-    var rand = Math.round(Math.random() * (3000 - 500)) + 500;
+function loopNote(num) {
+    var rand = Math.round(Math.random() * 2000);
     setTimeout(function() {
-            createNote();
-            animateNote();
-            loopNote();  
+      createNote(num);
+      loopNote(num);  
     }, rand);
 };
 
