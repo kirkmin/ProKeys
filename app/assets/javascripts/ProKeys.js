@@ -21,8 +21,17 @@ $(document).ready(function(){
   loopNote(1);
   loopNote(2);
   loopNote(3);
+  // window.addEventListener("keypress", soundOn1(event), false);
+  // window.addEventListener("Keyup", soundOff1(event), false);
 });
+var audio = new Audio('assets/sound.wav');
+$(window).keydown(function (e) {
+  soundOn1(e, audio);
+})
 
+$(window).keyup(function (e) {
+  soundOff1(e, audio);
+})
 
 function animateNote() {
   var height = $note.height() * 2,
@@ -41,10 +50,10 @@ function animateNote() {
 function createNote(num) {
   var top = Math.floor(Math.random() * 75),
       left = Math.floor(Math.random() * 87),
-      num = Math.floor(Math.random() * 5) + 1
+      number = Math.floor(Math.random() * 6) + 1
   $note = $( '<img />', {
     class: 'note',
-    src: "assets/note" + num + ".png",
+    src: "assets/note" + number + ".png",
     style: "left:" + left + "%; top:" + top + "%;"
   });
   var name = "#notes" + num
@@ -53,11 +62,21 @@ function createNote(num) {
 };
 
 function loopNote(num) {
-    var rand = Math.round(Math.random() * 2000);
+    var rand = Math.round(Math.random() * 3500);
     setTimeout(function() {
       createNote(num);
       loopNote(num);  
     }, rand);
 };
 
+function soundOn1(event, audio) {
+  if (event.keyCode == 65) {
+    audio.play();
+  }
+};
 
+function soundOff1(e, audio) {
+    if (event.keyCode == 65) {
+    audio.pause();
+  }
+};
