@@ -23,13 +23,14 @@ html, body {
 
 .bg {
 	background-image: image-url("background.jpg");
-	background-size: 110% 110%;
+	background-size: 120% 120%;
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 100%;
 }
 
 .notesContainer {
+	position: absolute;
 	height: 50%;
 	width: 100%;
 }
@@ -45,4 +46,14 @@ html, body {
 	position: absolute;
 	height: 25%;
 	width: 13%;
+}
+
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
 }

@@ -8,12 +8,20 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'index'
+    '': 'index',
+    'about' : 'about'
   },
 
   index: function () {
 
     var view = new ProKeys.Views.Index();
+
+    this._swapView(view);
+  },
+
+  about: function () {
+
+    var view = new ProKeys.Views.About();
 
     this._swapView(view);
   },

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default" role="navigation">
-	<div class="container container-fluid">
+	<div class="container-fluid">
 		<ul class="nav navbar-nav navbar-left">
 			<% if signed_in? %>
 				<li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-success navbar-btn" %></li>
@@ -15,6 +15,11 @@
 					</button>
 				</li>
 			<% end %>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#">Main</a></li>
+			<li><a href="#/about">About</a></li>
+			<li><a href="#">Contacts</a></li>
 		</ul>
 	</div>
 </nav>
