@@ -19,26 +19,3 @@ $(document).ready(function(){
     $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
   });
 });
-
-// var audio = new Audio('assets/sound.wav');
-// $(window).keydown(function (e) {
-//   soundOn1(e, audio);
-// })
-
-// $(window).keyup(function (e) {
-//   soundOff1(e, audio);
-// })
-
-// function soundOn1(event, audio) {
-//   if (event.keyCode == 65) {
-//     // audio.currentTime = 0
-//     audio.play();
-//   }
-// };
-
-// function soundOff1(e, audio) {
-//     if (event.keyCode == 65) {
-//       audio.currentTime = 0
-//       audio.pause();
-//   }
-// };
