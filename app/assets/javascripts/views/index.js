@@ -23,11 +23,16 @@ ProKeys.Views.Index = Backbone.CompositeView.extend({
 	},
 
 	soundOn: function (event) {
-		this.audios[event.keyCode].play();
+		if (this.audios[event.keyCode]) {
+			this.audios[event.keyCode].play();
+			console.log(event.keyCode)
+		}
 	},
 
 	soundOff: function (event) {
-		this.audios[event.keyCode].pause();
-		this.audios[event.keyCode].currentTime = 0;
+		if (this.audios[event.keyCode]) {
+			this.audios[event.keyCode].pause();
+			this.audios[event.keyCode].currentTime = 0;
+		}
 	},
 });
