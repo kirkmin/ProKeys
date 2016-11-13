@@ -21,6 +21,11 @@ html, body {
 	height: 100%;
 }
 
+div {
+	height: 100%;
+	width: auto;
+}
+
 .bg {
 	background-image: image-url("background.jpg");
 	background-size: 120% 120%;
@@ -30,20 +35,20 @@ html, body {
 }
 
 .notesContainer {
-	position: absolute;
+	position: relative;
 	height: 50%;
 	width: 100%;
 }
 
 .notes {
 	position: relative;
-	float: right;
+	float: left;
 	height: 100%;
 	width: 33%;
 }
 
 .note {
-	position: absolute;
+	position: relative;
 	height: 25%;
 	width: 13%;
 }
@@ -56,4 +61,14 @@ img {
   -webkit-user-drag: none;
   user-drag: none;
   -webkit-touch-callout: none;
+}
+
+.keyboard {
+	position: relative;
+	height: 50%;
+	width: 100%;
+}
+
+.keyboard label, div {
+	position: relative;
 }
