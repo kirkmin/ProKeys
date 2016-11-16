@@ -21,17 +21,18 @@ html, body {
 	height: 100%;
 }
 
-div {
-	height: 100%;
-	width: auto;
-}
-
 .bg {
 	background-image: image-url("background.jpg");
 	background-size: 120% 120%;
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 100%;
+}
+
+.wrapper {
+	position: absolute;
+	height: calc(100% - 72px);
+	width: 100%;
 }
 
 .notesContainer {
@@ -42,15 +43,22 @@ div {
 
 .notes {
 	position: relative;
-	float: left;
+	float: right;
 	height: 100%;
 	width: 33%;
 }
 
 .note {
-	position: relative;
+	position: absolute;
 	height: 25%;
-	width: 13%;
+	width: 10%;
+}
+
+.keyboard {
+	height: 50%;
+	width: 100%;
+	background-color: grey;
+	opacity: 0.5;
 }
 
 img {
@@ -61,14 +69,4 @@ img {
   -webkit-user-drag: none;
   user-drag: none;
   -webkit-touch-callout: none;
-}
-
-.keyboard {
-	position: relative;
-	height: 50%;
-	width: 100%;
-}
-
-.keyboard label, div {
-	position: relative;
 }
