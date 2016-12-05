@@ -2,7 +2,7 @@ ProKeys.Views.About = Backbone.CompositeView.extend({
 	template: JST['about'],
 
 	initialize: function () {
-		$(document).unbind('keypress');
+		$(document).unbind('keydown');
 		$(document).unbind('keyup');
 	},
 

@@ -1,4 +1,51 @@
-<nav class="navbar navbar-default" role="navigation">
+<div id="container-nav">
+	<section id="nav" class="group wrapper">
+		<h3>Maya Chopra</h3>
+        <!-- Checkbox Hack markup -->
+        <input type="checkbox" id="toggle" />
+        <label for="toggle" onclick>Menu</label>
+        <!-- /Checkbox Hack markup -->
+        <nav>
+            <ul class="left">
+				<% if signed_in? %>
+					<li><%= link_to "Sign out", session_url, method: :delete, class: "btn btn-success navbar-btn" %></li>
+				<% else %>
+					<li>
+						<a data-target="#logIn">
+						  Log In
+						</a>
+					</li>
+					<li>
+						<a data-target="#signUp">
+						  Sign Up
+						</a>
+					</li>
+				<% end %>
+            </ul>
+            <ul class="right">
+				<li><a href="#">Main</a></li>
+				<li><a href="#/about">About</a></li>
+				<li><a href="#">Contacts</a></li>
+            </ul>
+        </nav>
+		
+	
+	</section>
+</div>
+
+<style type="text/css" media="all">
+	#left {
+		float: left;
+	}
+
+	#right {
+		float: right;
+	}
+</style>
+
+
+
+<!-- <nav class="navbar-default" role="navigation">
 	<div class="container-fluid">
 		<ul class="nav navbar-nav navbar-left">
 			<% if signed_in? %>
@@ -24,8 +71,6 @@
 	</div>
 </nav>
 
-
-<!-- Modal -->
 <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -48,7 +93,6 @@
   </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -69,4 +113,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

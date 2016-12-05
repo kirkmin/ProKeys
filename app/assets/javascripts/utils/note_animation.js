@@ -10,7 +10,7 @@ _.extend(Backbone.View.prototype, {
 	},
 
 	createNote: function (num) {
-		var top = Math.floor(Math.random() * 75),
+		var top = Math.floor(Math.random() * 50),
 			left = Math.floor(Math.random() * 87),
 			number = Math.floor(Math.random() * 6) + 1
 		$note = $( '<img />', {

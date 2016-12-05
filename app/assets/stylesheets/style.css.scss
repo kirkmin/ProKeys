@@ -1,0 +1,278 @@
+/********************************************
+	Tag Resets
+********************************************/
+
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/********************************************
+	Normalize CSS
+	http://necolas.github.com/normalize.css/
+********************************************/
+
+html {
+	height: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	font-family: "Roboto Condensed Light", "Helvetica Neue", Helvetica, sans-serif;
+	min-height: 100%;
+	font-size: 100%;
+	background-image: image-url("background.jpg");
+	background-size: 120% 120%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	/* Part of Advanced Checkbox Hack for navigation */
+	-webkit-animation: bugfix infinite 1s; 
+	@-webkit-keyframes bugfix {
+		    from {padding: 0;} 
+		    to {padding: 0;} 
+	}
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+audio,
+canvas,
+video {
+	display: block;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+input,
+textarea,
+button,
+select {
+	margin: 0;
+	font-size: 100%;
+	line-height: normal;
+	vertical-align: baseline;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+textarea {
+	overflow: auto;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* ******************************************
+	Web Fonts
+****************************************** */
+
+@font-face {
+    font-family: 'Roboto Condensed Light';
+    src: image-url('fonts/robotocondensed-light-webfont.eot');
+    src: image-url('fonts/robotocondensed-light-webfont.eot?#iefix') format('embedded-opentype'),
+         image-url('fonts/robotocondensed-light-webfont.woff') format('woff'),
+         image-url('fonts/robotocondensed-light-webfont.ttf') format('truetype'),
+         image-url('fonts/robotocondensed-light-webfont.svg#RobotoCondensedLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Nav Styles
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+#nav h3 {
+	text-transform: capitalize;
+		}
+		
+#nav {
+		    padding: .65em 0;
+		}
+	
+#nav h3 {
+		    float: left;
+		    text-transform: capitalize; 
+		}
+	
+#nav ul {
+		    list-style: none;
+		    padding: 0;
+		    border-bottom: 1px solid #eee;
+		    margin: .65em 0 .39em;
+		}
+
+#nav li {
+		   border-top: 1px solid #eee;
+		}
+	
+#nav a {
+		   display: block;
+		   font-size: 1.063em;
+		   color: #333;
+		   text-decoration: none;
+		   padding: .975em 1.3em; 
+		}
+	
+#nav a:hover {
+		   background: #f8f8f8;
+		}
+	
+#nav nav {
+		    height: 0;
+		    overflow: hidden;
+		}
+		
+#nav input[type=checkbox] {
+		    position: absolute;
+		    top: -999em;
+		    left: -999em;
+		}
+	
+#nav label { 
+		    display: block;
+		    background: image-url("nav_icon.png") no-repeat right center;
+		    text-indent: -999em;
+		    cursor: pointer;
+		    -webkit-user-select: none;  /* Chrome all / Safari all */
+		    -moz-user-select: none;     /* Firefox all */
+		    -ms-user-select: none;      /* IE 10+ */
+		    user-select: none;
+		}
+	
+#nav input[type=checkbox]:checked ~ nav {
+		    height: auto;
+		    overflow: hidden;  
+		}
+
+#container-nav {
+	background:#fff;
+}
+
+	@media screen and (min-width: 45em) {
+			
+	    #nav label {
+	        display: none;
+	    }
+		
+    
+	    #nav {
+	        padding: 0;
+	    }
+		
+	    #nav h3 {
+	         margin: .39em 1.3em 0 0;
+	    }
+		
+	    #nav label {
+	        display: none;
+	    }
+		
+	    #nav nav {
+	        height: auto;
+	    }
+		
+	    #nav ul {
+	        border: 0;
+	        margin: 0;
+	        }
+		#nav li {
+		        display: inline;
+		        border: 0;
+		    }
+		#nav a {
+		        display: inline-block;
+		        }
+		    }

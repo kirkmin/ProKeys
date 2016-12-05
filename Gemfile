@@ -13,7 +13,6 @@ gem 'jbuilder'
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'backbone-on-rails'
-gem 'font-awesome-rails'
 gem 'tzinfo-data'
 
 group :doc do

@@ -14,30 +14,12 @@
  *= require_self
  */
 
-@import "bootstrap";
-@import "font-awesome";
-
-html, body {
-	height: 100%;
-}
-
-.bg {
-	background-image: image-url("background.jpg");
-	background-size: 120% 120%;
-	background-position: center center;
-	background-repeat: no-repeat;
-	height: 100%;
-}
-
 .wrapper {
-	position: absolute;
-	height: calc(100% - 72px);
-	width: 100%;
+	display: block
 }
 
 .notesContainer {
-	position: relative;
-	height: 50%;
+	height: 250px;
 	width: 100%;
 }
 

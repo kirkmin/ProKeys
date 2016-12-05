@@ -13,7 +13,7 @@ window.ProKeys = {
 };
 
 $(document).ready(function(){
-  $(".bg").mousemove(function(e){
+  $("body").mousemove(function(e){
     var amountMovedX = (e.pageX * -1 / 30);
     var amountMovedY = (e.pageY * -1 / 30);
     $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
