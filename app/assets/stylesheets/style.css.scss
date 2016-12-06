@@ -149,6 +149,14 @@ table {
 	border-spacing: 0;
 }
 
+button, input {
+	border:none;
+} 
+
+input {
+	display: block;
+}
+
 /* ******************************************
 	Web Fonts
 ****************************************** */
@@ -172,6 +180,11 @@ table {
 
 .right {
 	float: right;
+}
+
+#nav nav .left,
+#nav nav .right {
+	float: none;
 }
 
 #nav h3 {
@@ -241,38 +254,46 @@ table {
 	background:#fff;
 }
 
-	@media screen and (min-width: 45em) {
-			
-	    #nav label {
-	        display: none;
-	    }
+@media screen and (min-width: 45em) {
 		
-    
-	    #nav {
-	        padding: 0;
-	    }
-		
-	    #nav h3 {
-	         margin: .39em 1.3em 0 0;
-	    }
-		
-	    #nav label {
-	        display: none;
-	    }
-		
-	    #nav nav {
-	        height: auto;
-	    }
-		
-	    #nav ul {
+    #nav label {
+        display: none;
+    }
+	
+
+    #nav {
+        padding: 0;
+    }
+	
+    #nav h3 {
+         margin: .39em 1.3em 0 0;
+    }
+	
+    #nav label {
+        display: none;
+    }
+	
+    #nav nav {
+        height: auto;
+    }
+	
+    #nav ul {
+        border: 0;
+        margin: 0;
+        }
+	#nav li {
+	        display: inline;
 	        border: 0;
-	        margin: 0;
+	    }
+	#nav a {
+	        display: inline-block;
 	        }
-		#nav li {
-		        display: inline;
-		        border: 0;
-		    }
-		#nav a {
-		        display: inline-block;
-		        }
-		    }
+
+	#nav nav .left {
+		float: left;
+	}
+
+	#nav nav .right {
+		float: right;
+	}
+}

@@ -1,6 +1,6 @@
 <div id="container-nav">
 	<section id="nav" class="group wrapper">
-		<h3>Maya Chopra</h3>
+		<h3>ProKeys</h3>
         <!-- Checkbox Hack markup -->
         <input type="checkbox" id="toggle" />
         <label for="toggle" onclick>Menu</label>
@@ -8,18 +8,10 @@
         <nav>
             <ul class="left">
 				<% if signed_in? %>
-					<li><%= link_to "Sign out", session_url, method: :delete, class: "btn btn-success navbar-btn" %></li>
+					<li><%= link_to "Sign out", session_url, method: :delete %></li>
 				<% else %>
-					<li>
-						<a data-target="#logIn">
-						  Log In
-						</a>
-					</li>
-					<li>
-						<a data-target="#signUp">
-						  Sign Up
-						</a>
-					</li>
+					<li><a id="logInLink">Log In</a></li>
+					<li><a id="signUpLink">Sign Up</a></li>
 				<% end %>
             </ul>
             <ul class="right">
@@ -28,77 +20,36 @@
 				<li><a href="#">Contacts</a></li>
             </ul>
         </nav>
-		
-	
 	</section>
 </div>
 
-<style type="text/css" media="all">
-	#left {
-		float: left;
-	}
-
-	#right {
-		float: right;
-	}
-</style>
-
-
-
-<!-- <nav class="navbar-default" role="navigation">
-	<div class="container-fluid">
-		<ul class="nav navbar-nav navbar-left">
-			<% if signed_in? %>
-				<li><%= button_to "Sign out", session_url, method: :delete, class: "btn btn-success navbar-btn" %></li>
-			<% else %>
-				<li>
-					<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#logIn">
-					  Log In
-					</button>
-				</li>
-				<li>
-					<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#signUp">
-					  Sign Up
-					</button>
-				</li>
-			<% end %>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">Main</a></li>
-			<li><a href="#/about">About</a></li>
-			<li><a href="#">Contacts</a></li>
-		</ul>
-	</div>
-</nav>
-
-<div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div class="modal" id="logInModal">
+	<div class="modal-content">
 	  <div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	    <h4 class="modal-title" id="myModalLabel">Log In</h4>
+	    <span class="close">&times;</span>
+	    <h2>Log In</h2>
 	  </div>
+	  <div class="modal-body">
 		<form class="sign-in" action="/session" method="post" class="form-signin">
 	      <div class="modal-body">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 				<input id="username" name="user[username]" placeholder="Username" type="text" autofocus>
 				<input id="password" name="user[password]" placeholder="Password" type="password">
 	      </div>
-      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <input class="btn btn-success submit" type="submit" id="login" value="Login »">
+	  </div>
+	  <div class="modal-footer">
+	        <button class="close" type="button">Close</button>
+	        <input class="close" type="submit" id="login" value="Login »">
 		</form>
-      </div>
-    </div>
-  </div>
+	  </div>
+	</div>
 </div>
 
-<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+<div class="modal" id="signUpModal">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+        <span class="close">&times;</span>
+        <h2>Sign Up</h2>
       </div>
       <div class="modal-body">
 		<form class="sign-up" action="/users" method="post" class="form-signin">
@@ -107,10 +58,46 @@
 			<input id="password" name="user[password]" placeholder="Password" type="password">
       	  </div>
       <div class="modal-footer">
-        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        	<input class="btn btn-success" type="submit" id="sign-up" value="Sign Up »">
+        	<button class="close" type="button">Close</button>
+        	<input class="close" type="submit" id="sign-up" value="Sign Up »">
 	    </form>
       </div>
     </div>
-  </div>
-</div> -->
+</div>
+
+<script>
+// Get the modal
+var logInModal = document.getElementById('logInModal');
+var signUpModal = document.getElementById('signUpModal');
+// Get the button that opens the modal
+var logInLink = document.getElementById("logInLink");
+var signUpLink = document.getElementById("signUpLink");
+
+// Get the <span> element that closes the modal
+var close = document.getElementsByClassName("close");
+
+// When the user clicks the button, open the modal 
+logInLink.onclick = function() {
+    logInModal.style.display = "block";
+}
+signUpLink.onclick = function() {
+    signUpModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+for (var i = 0; i < close.length; i++) {
+    close[i].onclick = function () {
+	    signUpModal.style.display = "none";
+		logInModal.style.display = "none";
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == logInModal) {
+        logInModal.style.display = "none";
+    } else if (event.target == signUpModal) {
+    	signUpModal.style.display = "none";
+    }
+}
+</script>
