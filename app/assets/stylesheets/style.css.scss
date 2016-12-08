@@ -56,8 +56,8 @@ body {
 	font-size: 100%;
 	background-image: image-url("background.jpg");
 	background-size: 120% 120%;
-	background-position: center center;
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 	/* Part of Advanced Checkbox Hack for navigation */
 	-webkit-animation: bugfix infinite 1s; 
 	@-webkit-keyframes bugfix {
@@ -250,11 +250,19 @@ input {
 		    overflow: hidden;  
 		}
 
+#nav {
+	margin: 0 3.3%;
+}
+
 #container-nav {
 	background:#fff;
 }
 
 @media screen and (min-width: 45em) {
+
+	#nav {
+		margin: 0 5.5%;
+	}
 		
     #nav label {
         display: none;
@@ -266,7 +274,7 @@ input {
     }
 	
     #nav h3 {
-         margin: .39em 1.3em 0 0;
+         margin: .65em 1.3em 0 0;
     }
 	
     #nav label {
