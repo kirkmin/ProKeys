@@ -21,6 +21,7 @@
 .notesContainer {
 	height: 250px;
 	width: 100%;
+    overflow: hidden;
 }
 
 .notes {
@@ -50,7 +51,7 @@ img {
 .modal {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 10; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
