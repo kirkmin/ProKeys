@@ -15,9 +15,9 @@
 				<% end %>
             </ul>
             <ul class="right">
-				<li><a href="#">Main</a></li>
-				<li><a href="#/about">About</a></li>
-				<li><a href="#">Contacts</a></li>
+				<li><a href="#" class="closeNav">Main</a></li>
+				<li><a href="#/about" class="closeNav">About</a></li>
+				<li><a href="#" class="closeNav">Contacts</a></li>
             </ul>
         </nav>
 	</section>
@@ -77,9 +77,11 @@
 	// When the user clicks the button, open the modal 
 	logInLink.onclick = function() {
 	    logInModal.style.display = "block";
+		document.getElementById("toggle").checked = false;
 	}
 	signUpLink.onclick = function() {
 	    signUpModal.style.display = "block";
+		document.getElementById("toggle").checked = false;
 	}
 
 	// When the user clicks on <span> (x), close the modal
@@ -100,3 +102,13 @@
 	}
 	</script>
 <% end %>
+
+<script>
+	var closeNav = document.getElementsByClassName("closeNav");
+
+	for (var i = 0; i < closeNav.length; i++) {
+	    closeNav[i].onclick = function () {
+			document.getElementById("toggle").checked = false;    	
+	    }
+	}
+</script>
