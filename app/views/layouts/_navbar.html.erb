@@ -25,43 +25,41 @@
 
 <div class="modal" id="logInModal">
 	<div class="modal-content">
-	  <div class="modal-header">
-	    <span class="close">&times;</span>
-	    <h2>Log In</h2>
-	  </div>
-	  <div class="modal-body">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2>Log In</h2>
+		</div>
 		<form class="sign-in" action="/session" method="post" data-remote="true" class="form-signin">
-	      <div class="modal-body">
+	      	<div class="modal-body">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 				<input id="username" name="user[username]" placeholder="Username" type="text" autofocus>
 				<input id="password" name="user[password]" placeholder="Password" type="password">
-	      </div>
-	  </div>
-	  <div class="modal-footer">
-	        <button class="close" type="button">Close</button>
-	        <input type="submit" id="login" value="Login »">
+	      	</div>
+	  		<div class="modal-footer">
+	        	<button class="close" type="button">Close</button>
+	        	<input type="submit" id="login" value="Login »">
+	  		</div>
 		</form>
-	  </div>
 	</div>
 </div>
 
 <div class="modal" id="signUpModal">
     <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <h2>Sign Up</h2>
-      </div>
-      <div class="modal-body">
+    	<div class="modal-header">
+        	<span class="close">&times;</span>
+        	<h2>Sign Up</h2>
+    	</div>
 		<form class="sign-up" action="/users" method="post" data-remote="true" class="form-signin">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input id="username" name="user[username]" placeholder="Username" type="text" autofocus>
-			<input id="password" name="user[password]" placeholder="Password" type="password">
-      	  </div>
-      <div class="modal-footer">
-        	<button class="close" type="button">Close</button>
-        	<input type="submit" id="sign-up" value="Sign Up »">
+     		<div class="modal-body">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input id="username" name="user[username]" placeholder="Username" type="text" autofocus>
+				<input id="password" name="user[password]" placeholder="Password" type="password">
+      		</div>
+      		<div class="modal-footer">
+        		<button class="close" type="button">Close</button>
+        		<input type="submit" id="sign-up" value="Sign Up »">
+    		</div>
 	    </form>
-      </div>
     </div>
 </div>
 
