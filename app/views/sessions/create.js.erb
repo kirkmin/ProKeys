@@ -1,0 +1,8 @@
+<% if @user %>
+	ProKeys.currentUserId = <%= @user.id %>
+	$(document).trigger('log-in');
+	$("#nav_grid").html("<%= escape_javascript(render partial: 'layouts/navbar') %>");
+<% else %>
+	$("#logInModal").css("display", "none")
+	$("#error_grid").html("<%= escape_javascript(render partial: 'layouts/error') %>");
+<% end %>
