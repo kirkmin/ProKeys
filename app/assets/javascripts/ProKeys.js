@@ -21,7 +21,6 @@ $(document).ready(function(){
 
   // Modal logic
   $("#nav_grid").on("click", "#logInLink", function() {
-    console.log("LOL")
     $("#logInModal").css("display", "block")
     $("#toggle")[0].checked = false
   })
