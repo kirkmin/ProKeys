@@ -181,8 +181,8 @@ input {
 }
 		
 #nav {
-		    padding: .65em 0;
-		}
+    padding: .65em 0;
+}
 
 #nav #title {
 	padding: 0;
@@ -247,10 +247,11 @@ input {
 }
 
 #container-nav {
+	clear: both;
 	background:#fff;
 }
 
-@media screen and (min-width: 48em) {
+@media screen and (min-width: 45em) {
 
 	#nav {
 		margin: 0 5.5%;
@@ -266,7 +267,7 @@ input {
     }
 	
     #nav h3 {
-         margin: .65em .975em 0 0;
+         margin: .65em 1.3em 0 0;
     }
 	
     #nav label {
@@ -297,4 +298,13 @@ input {
 	#nav nav #right {
 		float: right;
 	}
+}
+
+//clearfix
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }
