@@ -175,30 +175,21 @@ input {
 
 // Nav Styles
 
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
-}
-
-#nav nav .left,
-#nav nav .right {
+#nav nav #left,
+#nav nav #right {
 	float: none;
 }
-
-#nav h3 {
-	text-transform: capitalize;
-		}
 		
 #nav {
 		    padding: .65em 0;
 		}
-	
+
+#nav #title {
+	padding: 0;
+}
+
 #nav h3 {
 		    float: left;
-		    text-transform: capitalize; 
 		}
 	
 #nav ul {
@@ -217,7 +208,7 @@ input {
 		   font-size: 1.063em;
 		   color: #333;
 		   text-decoration: none;
-		   padding: .975em 1.3em; 
+		   padding: .975em .975em; 
 		}
 	
 #nav a:hover {
@@ -259,7 +250,7 @@ input {
 	background:#fff;
 }
 
-@media screen and (min-width: 45em) {
+@media screen and (min-width: 48em) {
 
 	#nav {
 		margin: 0 5.5%;
@@ -275,14 +266,15 @@ input {
     }
 	
     #nav h3 {
-         margin: .65em 1.3em 0 0;
+         margin: .65em .975em 0 0;
     }
 	
     #nav label {
         display: none;
     }
 	
-    #nav nav {
+    #nav nav, #nav #title {
+    	display: inline;
         height: auto;
     }
 	
@@ -298,11 +290,11 @@ input {
 	        display: inline-block;
 	        }
 
-	#nav nav .left {
+	#nav nav #left {
 		float: left;
 	}
 
-	#nav nav .right {
+	#nav nav #right {
 		float: right;
 	}
 }

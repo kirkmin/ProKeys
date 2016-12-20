@@ -1,23 +1,26 @@
 <div id="container-nav">
 	<section id="nav" class="group wrapper">
-		<h3>ProKeys</h3>
+		<a id="title" href="#"><h3>ProKeys</h3></a>
         <!-- Checkbox Hack markup -->
         <input type="checkbox" id="toggle" />
         <label for="toggle" onclick>Menu</label>
         <!-- /Checkbox Hack markup -->
         <nav>
-            <ul class="left">
+            <ul id="left">
 				<% if signed_in? %>
-					<li><%= link_to "Sign out", session_url, method: :delete, remote: true %></li>
+					<li><%= link_to "Sign Out", session_url, method: :delete, remote: true %></li>
+					<li><a href="#/account">Account</a></li>
 				<% else %>
 					<li><a id="logInLink">Log In</a></li>
 					<li><a id="signUpLink">Sign Up</a></li>
 				<% end %>
             </ul>
-            <ul class="right">
-				<li><a href="#" class="closeNav">Main</a></li>
-				<li><a href="#/about" class="closeNav">About</a></li>
-				<li><a href="#" class="closeNav">Contacts</a></li>
+            <ul id="right">
+				<li><a href="#/front">Front</a></li>
+				<li><a href="#/blogs/all">Blogs</a></li>
+				<li><a href="#/customize">Customize</a></li>
+				<li><a href="#/record">Record</a></li>
+				<li><a href="#/about">About</a></li>
             </ul>
         </nav>
 	</section>
@@ -104,7 +107,7 @@
 <% end %>
 
 <script>
-	var closeNav = document.getElementsByClassName("closeNav");
+	var closeNav = document.getElementById("right").children
 
 	for (var i = 0; i < closeNav.length; i++) {
 	    closeNav[i].onclick = function () {

@@ -1,17 +1,18 @@
-.keyboard {
+#piano {
   margin: 0 5.5%;
-  height: 230px;
+  height: 216px;
   width: auto;
   overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
   position: relative;
 }
 
-.keyboard::-webkit-scrollbar { 
+#piano::-webkit-scrollbar { 
   display: none; 
 }
 
-.keyboard button {
+#piano button {
   display: none;
 }
 .white-buttons {
@@ -19,7 +20,7 @@
   position: absolute;
   top: 0;
 }
-.keyboard label {
+#piano label {
   height: 200px;
   width: 50px;
   display: inline-block;
@@ -34,12 +35,12 @@
   border-radius: 2px;
 }
 
-.keyboard .white-buttons label {
+#piano .white-buttons label {
   border-color: rgb(235, 235, 235);
   border-width: 1px;
 }
 
-.keyboard .white-buttons label:after {
+#piano .white-buttons label:after {
   content: '';
   position: absolute;
   background: #eee;
@@ -49,26 +50,26 @@
   bottom: 0;
   transition: height .3s linear;
 }
-.keyboard button:active + label {
+#piano button:active + label {
   transform: scale(0.99, 1.05);
   z-index: 1;
 }
-.keyboard button:active + label:after {
+#piano button:active + label:after {
   height: 1px;
 }
-.keyboard button:active + label + button + label {
+#piano button:active + label + button + label {
   box-shadow: 0px -10px 20px 4px #ddd
 }
-.keyboard button + label {
+#piano button + label {
   box-shadow: 10px 0 20px -10px #ccc;
 }
-.keyboard .black-buttons {
+#piano .black-buttons {
   position: relative;
   width: 364px;
   display: inline-block;
   height: 200px;
 }
-.keyboard button.black + label {
+#piano button.black + label {
   position: absolute;
   background: #000;
   width: 30px;
@@ -77,22 +78,22 @@
   box-shadow: 5px -5px 20px 0px #aaa;
   transition: all .3s linear;
 }
-.keyboard button.black:active + label {
+#piano button.black:active + label {
   box-shadow: 0 0 5px 2px #aaa;
   transform: scale(0.95, 1.05);
 }
-.keyboard button.black:nth-child(1) + label {
+#piano button.black:nth-child(1) + label {
   left: 37px;
 }
-.keyboard button.black:nth-child(3) + label {
+#piano button.black:nth-child(3) + label {
   left: 88px;
 }
-.keyboard button.black:nth-child(5) + label {
+#piano button.black:nth-child(5) + label {
   left: 192px;
 }
-.keyboard button.black:nth-child(7) + label {
+#piano button.black:nth-child(7) + label {
   left: 245px;
 }
-.keyboard button.black:nth-child(9) + label {
+#piano button.black:nth-child(9) + label {
   left: 296px;
 }

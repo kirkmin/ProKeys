@@ -6,7 +6,6 @@ window.ProKeys = {
   Utils: {},
   initialize: function() {
     var $root = $('#main');
-    this.currentUserId = $root.data('current-user');
     new ProKeys.Routers.Router();
     Backbone.history.start();
   },
