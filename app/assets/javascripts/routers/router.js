@@ -8,13 +8,17 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'index',
-    'about' : 'about'
+    '': 'front',
+    'about' : 'about',
+    'customize' : 'customize',
+    'record' : 'record',
+    'account' : 'account',
+    'posts/index' : 'postIndex'
   },
 
-  index: function () {
+  front: function () {
 
-    var view = new ProKeys.Views.Index();
+    var view = new ProKeys.Views.Front();
 
     this._swapView(view);
   },
@@ -22,6 +26,34 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   about: function () {
 
     var view = new ProKeys.Views.About();
+
+    this._swapView(view);
+  },
+
+  customize: function () {
+
+    var view = new ProKeys.Views.Customize();
+
+    this._swapView(view);
+  },
+
+  record: function () {
+
+    var view = new ProKeys.Views.Record();
+
+    this._swapView(view);
+  },
+
+  account: function () {
+
+    var view = new ProKeys.Views.Account();
+
+    this._swapView(view);
+  },
+
+  postIndex: function () {
+
+    var view = new ProKeys.Views.PostIndex();
 
     this._swapView(view);
   },

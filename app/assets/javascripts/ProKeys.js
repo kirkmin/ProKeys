@@ -10,7 +10,6 @@ window.ProKeys = {
     Backbone.history.start();
   },
 };
-
 $(document).ready(function(){
   // Parallax
   $("body").mousemove(function(e){
