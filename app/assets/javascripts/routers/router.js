@@ -62,8 +62,6 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     this.currentView && this.currentView.remove();
     this.currentView = view;
     this.$rootEl.html(view.render().$el);
-    if (scroller) {
-      $('.scroller').perfectScrollbar()
-    }
+    if (scroller) {$('.scroller').perfectScrollbar()}
   }
 });
