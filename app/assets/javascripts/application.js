@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require perfectscroll
 //= require underscore
 //= require backbone
 //= require ProKeys

@@ -24,14 +24,17 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 
 	soundOn: function (event) {
 		var audio = this.audios[event.keyCode]
+		var lol = event.keyCode
 		this.keyCode = event.keyCode
 		if (audio && !$(audio).data("playing")) {
 			audio.play().catch(function (e) {
 				console.log("caught error but hopefully resolved by my haxor ways")
-				this.audios[this.keyCode].pause()
 				this.audios[this.keyCode] = new Audio('../assets/notes/' + this.defaultKeys[this.keyCode] + '.mp3')
+				this.audios[this.keyCode].play();
 			}.bind(this));
 			$(audio).data("playing", true)
+		} else if (!audio && defaultKeys[this.keyCode]) {
+			debugger
 		}
 	},
 

@@ -1,15 +1,8 @@
 #piano {
-  margin: 0 5.5%;
-  height: 216px;
-  width: auto;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  margin: auto;
+  height: 215px;
   white-space: nowrap;
   position: relative;
-}
-
-#piano::-webkit-scrollbar { 
-  display: none; 
 }
 
 #piano button {
@@ -101,9 +94,9 @@
 //keyboard
 #keyboard {
 position: relative;
-width: 700px;
-margin: 100px 5.5% 0 5.5%;
-white-space: nowrap;
+max-width: 700px;
+padding-bottom: 12px;
+margin: auto;
 }
 
 #keyboard button {
@@ -111,9 +104,7 @@ white-space: nowrap;
 }
 
 #keyboard .row {
-  display: block;
-margin: 0 auto;
-clear: both;
+  width: 700px
 }
 
 #keyboard label {
@@ -159,4 +150,8 @@ cursor: pointer;
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   not supported by any browser */
+}
+
+.center {
+  margin: 0 auto;
 }

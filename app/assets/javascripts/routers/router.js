@@ -34,7 +34,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
 
     var view = new ProKeys.Views.Customize();
 
-    this._swapView(view);
+    this._swapView(view, true);
   },
 
   record: function () {
@@ -58,9 +58,12 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  _swapView: function (view) {
+  _swapView: function (view, scroller) {
     this.currentView && this.currentView.remove();
     this.currentView = view;
     this.$rootEl.html(view.render().$el);
+    if (scroller) {
+      $('.scroller').perfectScrollbar()
+    }
   }
 });
