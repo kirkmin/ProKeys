@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root to: "static_page#root"
 
-  resources :users
-  resource :session
+  resources :users, only: [:create]
+  resource :session, only: [:create, :destroy]
+
+  namespace :api, defaults: { format: :json } do
+    resources :keysets, except: [:edit, :new]
+  end
 
 end

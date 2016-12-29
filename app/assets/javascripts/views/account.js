@@ -2,8 +2,6 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	template: JST['account'],
 
 	initialize: function () {
-		$(document).unbind('keydown');
-		$(document).unbind('keyup');
 	},
 
 	render: function () {

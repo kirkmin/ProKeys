@@ -31,10 +31,14 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   customize: function () {
+    var keysets = new ProKeys.Collections.Keysets()
+    keysets.fetch();
 
-    var view = new ProKeys.Views.Customize();
+    var view = new ProKeys.Views.Customize({
+      collection: keysets
+    });
 
-    this._swapView(view, true);
+    this._swapView(view);
   },
 
   record: function () {
@@ -58,10 +62,9 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  _swapView: function (view, scroller) {
+  _swapView: function (view) {
     this.currentView && this.currentView.remove();
     this.currentView = view;
     this.$rootEl.html(view.render().$el);
-    if (scroller) {$('.scroller').perfectScrollbar()}
   }
 });

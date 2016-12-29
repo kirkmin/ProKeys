@@ -1,8 +1,21 @@
 #piano {
   margin: auto;
   height: 215px;
-  white-space: nowrap;
   position: relative;
+  white-space: nowrap;
+}
+
+#piano .white-buttons span {
+  display: block;
+  margin-top: 160px;
+  text-align: center;
+}
+
+#piano .black-buttons span {
+  display: block;
+  margin-top: 90px;
+  text-align: center;
+  color: white;
 }
 
 #piano button {
@@ -38,13 +51,14 @@
   position: absolute;
   background: #eee;
   width: 100%;
-  height: 10px;
-  transform: rotateX(45deg) rotateZ(5deg) rotateY(-5deg);
+  height: 9px;
+  padding: 1px, 1px;
+  transform: rotateX(45deg);
   bottom: 0;
   transition: height .3s linear;
 }
 #piano button:active + label {
-  transform: scale(0.99, 1.05);
+  transform: scale(1, 1.05);
   z-index: 1;
 }
 #piano button:active + label:after {
@@ -57,6 +71,7 @@
   box-shadow: 10px 0 20px -10px #ccc;
 }
 #piano .black-buttons {
+  left: 52px;
   position: relative;
   width: 364px;
   display: inline-block;
@@ -75,19 +90,19 @@
   box-shadow: 0 0 5px 2px #aaa;
   transform: scale(0.95, 1.05);
 }
-#piano button.black:nth-child(1) + label {
+#piano button.black:nth-of-type(1) + label {
   left: 37px;
 }
-#piano button.black:nth-child(3) + label {
+#piano button.black:nth-of-type(2) + label {
   left: 88px;
 }
-#piano button.black:nth-child(5) + label {
+#piano button.black:nth-of-type(3) + label {
   left: 192px;
 }
-#piano button.black:nth-child(7) + label {
+#piano button.black:nth-of-type(4) + label {
   left: 245px;
 }
-#piano button.black:nth-child(9) + label {
+#piano button.black:nth-of-type(5) + label {
   left: 296px;
 }
 

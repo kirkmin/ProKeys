@@ -51,4 +51,10 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 			$(audio).data("playing", false)
 		}
 	},
+
+	remove: function (e) {
+	    $(document).unbind('keydown');
+	    $(document).unbind('keyup');
+	    Backbone.View.prototype.remove.call(this);
+	}
 });

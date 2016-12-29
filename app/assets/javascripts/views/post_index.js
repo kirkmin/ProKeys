@@ -2,8 +2,6 @@ ProKeys.Views.PostIndex = Backbone.CompositeView.extend({
 	template: JST['post_index'],
 
 	initialize: function () {
-		$(document).unbind('keydown');
-		$(document).unbind('keyup');
 	},
 
 	render: function () {
