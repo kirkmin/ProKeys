@@ -50,9 +50,9 @@
   content: '';
   position: absolute;
   background: #eee;
-  width: 100%;
+  width: 48px;
   height: 9px;
-  padding: 1px, 1px;
+  margin: 0 1px;
   transform: rotateX(45deg);
   bottom: 0;
   transition: height .3s linear;
@@ -123,40 +123,99 @@ margin: auto;
 }
 
 #keyboard label {
+position: relative;
 float: left;
-margin: 0 5px 5px 0;
+margin: 0 5px 10px 0;
 width: 40px;
 height: 40px;
 line-height: 40px;
 text-align: center;
-background: #fff;
-border: 1px solid #D3D3D3;
+background: #fafafa;
+border: 1px solid #eee;
+border-radius: 5px 5px 0 0;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
+top: 0px;
+box-shadow: 5px 0px 7px -1px #ccc, 0px 0px 0px white inset;
+transition: top .3s linear, box-shadow .3s linear;
+}
+
+#keyboard button:enabled:active + label {
+top: 5px;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+box-shadow: 0px 0px 0px white, 5px 5px 7px -1px #ccc inset;
+}
+
+#keyboard label:after {
+  content: '';
+  position: absolute;
+  background: #eee;
+  width: 42px;
+  height: 10px;
+  bottom: -5px;
+  left: -1px;
+  z-index: -1;
+  border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  transition: bottom .3s linear;
+}
+
+#keyboard button:enabled:active + label:after {
+  bottom: 0;
 }
 
 #keyboard .tab {
-width: 70px;
+  width: 70px;
 }
+
+#keyboard .tab:after {
+width: 72px;
+}
+
 #keyboard .capslock {
 width: 80px;
+}
+
+#keyboard .capslock:after {
+  width: 82px;
 }
 #keyboard .return {
 width: 77px;
 }
+
+#keyboard .return:after {
+width: 79px;
+}
+
 #keyboard .left-shift {
 width: 95px;
 }
+
+#keyboard .left-shift:after {
+width: 97px;
+}
+
 #keyboard .right-shift {
 width: 109px;
 }
-#keyboard button:active + label {
-position: relative;
-top: 1px;
-left: 1px;
-border-color: #B0C4DE;
-cursor: pointer;
+
+#keyboard .right-shift:after {
+width: 111px;
 }
+
+#keyboard .unused {
+  background: #ddd;
+  // background: transparent;
+  // border: none;
+}
+
+// #keyboard .unused:after {
+//   display: none;
+// }
+
 #keyboard {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Chrome/Safari/Opera */

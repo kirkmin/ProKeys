@@ -1,4 +1,4 @@
-_.extend(Backbone.View.prototype, {
+ProKeys.Utils.noteAnimation = {
 
 	loopNote: function (num) {
 		var rand = Math.round(Math.random() * 3500);
@@ -43,4 +43,4 @@ _.extend(Backbone.View.prototype, {
 		this.loopNote(2);
 		this.loopNote(3);
 	}),
-});
+}

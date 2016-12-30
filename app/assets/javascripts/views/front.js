@@ -58,3 +58,6 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 	    Backbone.View.prototype.remove.call(this);
 	}
 });
+
+_.extend(ProKeys.Views.Front.prototype, ProKeys.Utils.SoundObjects);
+_.extend(ProKeys.Views.Front.prototype, ProKeys.Utils.noteAnimation);

@@ -1,4 +1,4 @@
-_.extend(Backbone.View.prototype, {
+ProKeys.Utils.SoundObjects = {
 
 
 	defaultKeys: {
@@ -196,4 +196,4 @@ _.extend(Backbone.View.prototype, {
 // Gb6
 // Gb7
 	// },
-})
+}
