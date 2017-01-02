@@ -21,10 +21,10 @@ module Api
 		end
 
 		def show
-			@keyset = Keyset.find(params[:id])
+			@keyset = current_user.keysets.find(params[:id])
 
 			if @keyset
-				render :show
+				render json: @keyset
 			else
 				render json: @keyset.errors.full_messages, status: :unprocessable_entity
 			end

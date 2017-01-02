@@ -24,4 +24,8 @@ class SessionsController < ApplicationController
 			format.js
 		end
 	end
+
+	def show
+		render json: signed_in?
+	end
 end

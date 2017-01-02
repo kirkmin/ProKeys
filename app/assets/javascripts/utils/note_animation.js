@@ -1,7 +1,7 @@
 ProKeys.Utils.noteAnimation = {
 
 	loopNote: function (num) {
-		var rand = Math.round(Math.random() * 3500);
+		var rand = Math.round(Math.random() * 3500),
 			that = this
 		setTimeout(function() {
 			that.createNote(num);

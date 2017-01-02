@@ -45,4 +45,8 @@ $(document).ready(function(){
   $("nav #right li").on("click", function () {
     $("#toggle")[0].checked = false;
   })
+
+  $(document).on('click',".closeFlash", function(e) {
+    $(e.target.parentElement).remove()
+  })
 });

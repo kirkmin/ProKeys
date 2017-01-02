@@ -31,32 +31,59 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   customize: function () {
-    var keysets = new ProKeys.Collections.Keysets()
-    keysets.fetch();
+    $.ajax("session", {
+      type: "get",
+      success: function (data) {
+        if (data) {
+          var keysets = new ProKeys.Collections.Keysets()
+          keysets.fetch();
 
-    var view = new ProKeys.Views.Customize({
-      collection: keysets
-    });
+          var view = new ProKeys.Views.Customize({
+            collection: keysets
+          });
 
-    this._swapView(view);
+          this._swapView(view);
+        } else {
+          $("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>')
+          window.history.back()
+        }
+      }.bind(this)
+    })
   },
 
   record: function () {
+    $.ajax("session", {
+      type: "get",
+      success: function (data) {
+        if (data) {
+          var view = new ProKeys.Views.Record();
 
-    var view = new ProKeys.Views.Record();
-
-    this._swapView(view);
+          this._swapView(view);
+        } else {
+          $("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>')
+          window.history.back()
+        }
+      }.bind(this)
+    })
   },
 
   account: function () {
+    $.ajax("session", {
+      type: "get",
+      success: function (data) {
+        if (data) {
+          var view = new ProKeys.Views.Account();
 
-    var view = new ProKeys.Views.Account();
-
-    this._swapView(view);
+          this._swapView(view);
+        } else {
+          $("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>')
+          window.history.back()
+        }
+      }.bind(this)
+    })
   },
 
   postIndex: function () {
-
     var view = new ProKeys.Views.PostIndex();
 
     this._swapView(view);

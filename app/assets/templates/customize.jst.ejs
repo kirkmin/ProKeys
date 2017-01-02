@@ -1,7 +1,7 @@
 <h1>Sup this is customize</h1>
-<ul class="keysets">
+<ul id="keysets">
     <% keysets.each(function (keyset) { %>
-        <li>
+        <li data-keyset-id="<%= keyset.escape('id') %>">
             <button>
                 <%= keyset.escape('title') %>
             </button>
