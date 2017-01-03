@@ -21,5 +21,9 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 				$("#" + key + "+ label .hover").text("")
 			}
 		})
+	},
+
+	setNewNote: function (note, key) {
+		console.log("set " + note.innerHTML + " at key " + key.innerHTML)
 	}
 })
