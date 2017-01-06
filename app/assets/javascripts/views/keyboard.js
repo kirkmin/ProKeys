@@ -24,6 +24,20 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 	},
 
 	setNewNote: function (note, key) {
-		console.log("set " + note.innerHTML + " at key " + key.innerHTML)
+		if (!$(key).hasClass("unused")) {
+			var keyString = this.symbols[key.innerHTML] || key.innerHTML
+			$("#" + keyString + "+ label .hover").text(note.innerHTML)
+		}
+	},
+
+	getKeyset: function () {
+		var attrs = {};
+		_.each($("#keyboard label:not(.unused)"), function (label) {
+			if ($(label).find(".hover").text() != "") {
+				attrs[$(label).find(".not").text()] = $(label).find(".hover").text()
+			}
+		})
+		return attrs
 	}
-})
+});
+_.extend(ProKeys.Views.Keyboard.prototype, ProKeys.Utils.SoundObjects);

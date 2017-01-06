@@ -33,7 +33,7 @@ module Api
 		def update
 			@keyset = current_user.keysets.find(params[:id])
 			if @keyset.update(keyset_params)
-				render :show
+				render json: @keyset
 			else
 				render json: @keyset.errors.full_messages, status: :unprocessable_entity
 			end
@@ -41,7 +41,7 @@ module Api
 
 		private
 		def keyset_params
-			params.require(:keyset).permit(:title)
+			params.require(:keyset).permit(:title, :q, :w, :e, :r, :t, :y, :u, :i, :o, :p, :openbracket, :closebracket, :a, :s, :d, :f, :g, :h, :j, :k, :l, :semicolon, :quotation, :z, :x, :c, :v, :b, :n, :m, :comma, :period, :period, :slash)
 		end
 
 	end

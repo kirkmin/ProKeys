@@ -136,7 +136,7 @@ border-radius: 5px 5px 0 0;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 top: 0px;
-box-shadow: 5px 0px 7px -1px #ccc, 0px 0px 0px white inset;
+box-shadow: 5px 0px 7px -1px #eee, 0px 0px 0px white inset;
 transition: top .3s linear, box-shadow .3s linear;
 }
 
@@ -145,7 +145,7 @@ top: 5px;
 border-radius: 5px;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
-box-shadow: 0px 0px 0px white, 5px 5px 7px -1px #ccc inset;
+box-shadow: 0px 0px 0px white, 5px 5px 7px -1px #eee inset;
 }
 
 #keyboard label:after {
@@ -176,6 +176,7 @@ box-shadow: 0px 0px 0px white, 5px 5px 7px -1px #ccc inset;
 }
 
 #keyboard label:hover .hover{
+  color: blue;
   display: inline;
 }
 
@@ -222,7 +223,7 @@ width: 111px;
   background: #ddd;
 }
 
-#keyboard, #piano {
+html {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Chrome/Safari/Opera */
      -khtml-user-select: none; /* Konqueror */
@@ -232,6 +233,57 @@ width: 111px;
                                   not supported by any browser */
 }
 
+#keysets {
+  position: relative;
+  max-width: 700px;
+  white-space: nowrap;
+  padding-bottom: 8px;
+}
+
+.keysetitem {
+  overflow: hidden;
+  display: inline-block;
+  margin: 5px 5px;
+  background: #fafafa;
+  height: 50px;
+  width: 200px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  box-shadow: 5px 5px 7px -1px #ccc;
+}
+
+#clicked {
+  border: 3px solid black;
+}
+
 .center {
   margin: 0 auto;
+}
+
+#buttons {
+  text-align: center;
+}
+
+.saveDiv {
+  background: #fafafa;
+  display: inline-block;
+  padding: 10px 10px;
+  width: 195px;
+  height: 55px;
+  margin: 0 10px 10px 10px;
+  vertical-align:top;
+}
+
+.saveDiv button {
+  margin: 0 0 10px 0;
+}
+
+.saveDiv #keysetTitle {
+  overflow: hidden;
+  width: 195px;
+}
+
+.saveDiv input {
+  background: #eee;
 }

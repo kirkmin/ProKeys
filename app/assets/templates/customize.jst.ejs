@@ -1,15 +1,17 @@
 <h1>Sup this is customize</h1>
-<ul id="keysets">
-    <% keysets.each(function (keyset) { %>
-        <li data-keyset-id="<%= keyset.escape('id') %>">
-            <button>
-                <%= keyset.escape('title') %>
-            </button>
-        </li>
-    <% }); %>
-</ul>
-
+<div class="scroller" id="keysets">
+</div>
 <div class="scroller" id="piano">
 </div>
 <div class="scroller" id="keyboard">
+</div>
+<div id="buttons">
+	<div class="saveDiv">
+		<button id="save">Save</button>
+		<div id="keysetTitle"></div>
+	</div>
+	<div class="saveDiv">
+		<button id="saveAs">Save As</button>
+		<input type="text" name="keysetTitle">
+	</div>
 </div>

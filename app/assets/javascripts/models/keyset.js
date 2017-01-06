@@ -1,3 +1,3 @@
 ProKeys.Models.Keyset = Backbone.Model.extend({
-  urlRoot: 'keysets',
+  urlRoot: 'api/keysets',
 });

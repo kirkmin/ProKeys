@@ -37,6 +37,16 @@ ProKeys.Utils.SoundObjects = {
 		"191" : "A4"
 	},
 
+	symbols: {
+		"[" : "openbracket",
+		"]" : "closebracket",
+		";" : "semicolon",
+		"'" : "quotation",
+		"," : "comma",
+		"." : "period",
+		"/" : "slash"
+	},
+
 	// keyCodes: {
 	// 	"q" : 81,
 	// 	"w" : 87,
