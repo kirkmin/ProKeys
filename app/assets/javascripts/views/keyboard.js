@@ -32,9 +32,11 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 
 	getKeyset: function () {
 		var attrs = {};
+		var that = this;
 		_.each($("#keyboard label:not(.unused)"), function (label) {
 			if ($(label).find(".hover").text() != "") {
-				attrs[$(label).find(".not").text()] = $(label).find(".hover").text()
+				var not = that.symbols[$(label).find(".not").text()] || $(label).find(".not").text()
+				attrs[not] = $(label).find(".hover").text()
 			}
 		})
 		return attrs

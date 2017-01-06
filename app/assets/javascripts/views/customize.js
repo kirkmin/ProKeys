@@ -27,6 +27,8 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 				success: function () {
 					that.keyboard.setNewKey(that.model)
 					$("#keysetTitle").text(that.model.attributes.title)
+				}, error: function (e) {
+					
 				}
 			})
 		}

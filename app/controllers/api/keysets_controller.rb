@@ -35,7 +35,7 @@ module Api
 			if @keyset.update(keyset_params)
 				render json: @keyset
 			else
-				render json: @keyset.errors.full_messages, status: :unprocessable_entity
+				render json: { errors: @keyset.errors.full_messages }, status: :unprocessable_entity
 			end
 		end
 
