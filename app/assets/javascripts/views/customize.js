@@ -4,7 +4,6 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	events: {
 		"click .keysetitem" : "setKeyset",
 		"click #save" : "saveKeyset",
-		"click #saveAs" : "saveNewKeyset"
 	},
 
 	initialize: function () {
@@ -16,6 +15,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
 		this.listenTo(this.collection, 'sync', this.render)
+		this.listenTo(this.collection, 'sync', this.setKeyset)
 	},
 
 	saveKeyset: function (e) {
@@ -28,7 +28,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 					that.keyboard.setNewKey(that.model)
 					$("#keysetTitle").text(that.model.attributes.title)
 				}, error: function (e) {
-					
+					$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>')
 				}
 			})
 		}

@@ -16,7 +16,7 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 		this.model = model
 		_.each(this.model.attributes, function (value, key) {
 			if (value && $("#" + key).length) {
-				$("#" + key + "+ label .hover").text(value)
+				$("#" + key + "+ label .hover").text(value.replace("b", "♭"))
 			} else if ($("#" + key).length) {
 				$("#" + key + "+ label .hover").text("")
 			}
@@ -36,7 +36,7 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 		_.each($("#keyboard label:not(.unused)"), function (label) {
 			if ($(label).find(".hover").text() != "") {
 				var not = that.symbols[$(label).find(".not").text()] || $(label).find(".not").text()
-				attrs[not] = $(label).find(".hover").text()
+				attrs[not] = $(label).find(".hover").text().replace("♭", "b")
 			}
 		})
 		return attrs
