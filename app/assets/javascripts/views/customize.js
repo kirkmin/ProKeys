@@ -15,7 +15,6 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
 		this.listenTo(this.collection, 'sync', this.render)
-		this.listenTo(this.collection, 'sync', this.setKeyset)
 	},
 
 	saveKeyset: function (e) {
@@ -26,16 +25,12 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 			this.model.save(attrs, {
 				success: function () {
 					that.keyboard.setNewKey(that.model)
-					$("#keysetTitle").text(that.model.attributes.title)
+					$("#keysetTitle").text("Current Keyset: " + that.model.attributes.title)
 				}, error: function (e) {
 					$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>')
 				}
 			})
 		}
-	},
-
-	saveNewKeyset: function () {
-
 	},
 
 	setKeyboard: function (e) {
@@ -68,10 +63,14 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	},
 
 	setKeyset: function (e) {
-		this.model = this.collection.get($(e.currentTarget).find(".keysetBoard").data("keyset-id")) || this.collection.first()
+		if (e) {
+			this.model = this.collection.get($(e.currentTarget).find(".keysetBoard").data("keyset-id")) || this.collection.first()
+		} else {
+			this.model = this.collection.first()
+		}
 		if (this.model) {
 			this.keyboard.setNewKey(this.model)
-			$("#keysetTitle").text(this.model.attributes.title)
+			$("#keysetTitle").text("Current Keyset: " + this.model.attributes.title)
 		}
 	},
 
@@ -79,11 +78,12 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		var view = new ProKeys.Views.KeysetItem({
 			model: keyset,
 		});
-		this.addSubview("#keysets", view)
+		this.addSubview(".keysets", view)
 	},
 
 	addKeysetItems: function () {
 		var that = this
+		this.removeSubviews(".keysets")
 		this.collection.each(function (keyset) {
 			that.addKeysetItem(keyset)
 		});
@@ -94,7 +94,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 			keysets: this.collection
 		});
 		this.$el.html(content);
-		this.addKeysetItems()
+		this.addKeysetItems();
 		this.attachSubviews();
 		this.$('.scroller').perfectScrollbar();
 		return this;

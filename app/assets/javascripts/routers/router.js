@@ -35,7 +35,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
       type: "get",
       success: function (data) {
         if (data) {
-          var keysets = new ProKeys.Collections.Keysets()
+          var keysets = ProKeys.Collections.keysets
           keysets.fetch();
 
           var view = new ProKeys.Views.Customize({
@@ -72,7 +72,12 @@ ProKeys.Routers.Router = Backbone.Router.extend({
       type: "get",
       success: function (data) {
         if (data) {
-          var view = new ProKeys.Views.Account();
+          var keysets = ProKeys.Collections.keysets
+          keysets.fetch();
+
+          var view = new ProKeys.Views.Account({
+            collection: keysets
+          });
 
           this._swapView(view);
         } else {
