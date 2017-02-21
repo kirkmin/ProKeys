@@ -13,6 +13,7 @@ gem 'jbuilder'
 gem 'bcrypt'
 gem 'backbone-on-rails'
 gem 'tzinfo-data'
+gem 'rails_12factor', group: :production
 
 
 group :doc do
