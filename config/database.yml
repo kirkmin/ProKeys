@@ -4,7 +4,7 @@ development:
   pool: 5
   timeout: 5000
   username: "postgres"
-  password:  <%= Rails.application.secrets[:postgres] %>
+  password: <%= Rails.application.secrets[:postgres] %>
 test:
   adapter: postgresql
   database: my_database_test
