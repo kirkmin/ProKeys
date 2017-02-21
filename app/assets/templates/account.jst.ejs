@@ -1,3 +1,46 @@
-<h1>Sup this is account</h1>
-<div class="scroller keysets">
+<h1>Your Keysets</h1>
+<div class="scroller keysetContainer">
+	<div id="newKeyset">Create new</div>
+	<div class="keysets"></div>
 </div>
+<h1>Your Recordings</h1>
+<div class="scroller recordings">
+</div>
+
+<!-- modal new keyset -->
+<div class="modal" id="newKeysetModal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2>New Keyset</h2>
+		</div>
+		<form class="newKeysetForm">
+	      	<div class="modal-body">
+				<input id="title" placeholder="Title" type="text" autofocus>
+	      	</div>
+	  		<div class="modal-footer">
+	        	<button class="close">Close</button>
+	        	<input type="submit" id="newKeysetSubmit" value="Create New Keyset">
+	  		</div>
+		</form>
+	</div>
+</div>
+
+<!-- modal keyset items -->
+<div class="modal" id="keysetItemModal">
+	<div class="modal-content">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2></h2>
+		</div>
+		<form class="KeysetItemForm">
+	      	<div class="modal-body">
+	      	</div>
+	  		<div class="modal-footer">
+	        	<button class="close">Close</button>
+				<button class="customize">Customize!</button>
+	  		</div>
+		</form>
+	</div>
+</div>
+

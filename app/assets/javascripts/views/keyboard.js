@@ -1,20 +1,14 @@
 ProKeys.Views.Keyboard = Backbone.View.extend({
 	template: JST['keyboard'],
 
-	initialize: function () {
-	},
-
 	render: function () {
-		var content = this.template({
-			model: this.model
-		})
+		var content = this.template()
 		this.$el.html(content)
 		return this;
 	},
 
 	setNewKey: function (model) {
-		this.model = model
-		_.each(this.model.attributes, function (value, key) {
+		_.each(model.attributes, function (value, key) {
 			if (value && $("#" + key).length) {
 				$("#" + key + "+ label .hover").text(value.replace("b", "♭"))
 			} else if ($("#" + key).length) {

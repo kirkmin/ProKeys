@@ -10,7 +10,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'front',
     'about' : 'about',
-    'customize' : 'customize',
+    'customize/:id' : 'customize',
     'record' : 'record',
     'account' : 'account',
     'posts/index' : 'postIndex'
@@ -30,16 +30,15 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  customize: function () {
+  customize: function (id) {
     $.ajax("session", {
       type: "get",
       success: function (data) {
-        if (data) {
-          var keysets = ProKeys.Collections.keysets
-          keysets.fetch();
+        if (data && id) {
+          var keyset = ProKeys.Collections.keysets.getOrFetch(id)
 
           var view = new ProKeys.Views.Customize({
-            collection: keysets
+            model: keyset
           });
 
           this._swapView(view);

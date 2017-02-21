@@ -2,7 +2,6 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	template: JST['customize'],
 
 	events: {
-		"click .keysetitem" : "setKeyset",
 		"click #save" : "saveKeyset",
 	},
 
@@ -14,23 +13,21 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mousedown', _.bind(this.getPiano, this));
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
-		this.listenTo(this.collection, 'sync', this.render)
+		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
 	},
 
 	saveKeyset: function (e) {
 		e.preventDefault();
 		var that = this;
-		if (this.model) {
-			var attrs = this.keyboard.getKeyset()
-			this.model.save(attrs, {
-				success: function () {
-					that.keyboard.setNewKey(that.model)
-					$("#keysetTitle").text("Current Keyset: " + that.model.attributes.title)
-				}, error: function (e) {
-					$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>')
-				}
-			})
-		}
+		var attrs = this.keyboard.getKeyset()
+		this.model.save(attrs, {
+			success: function () {
+				that.keyboard.setNewKey(that.model)
+				$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Save successful!</div>')
+			}, error: function (model, response) {
+				$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>')
+			}
+		})
 	},
 
 	setKeyboard: function (e) {
@@ -62,39 +59,11 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		}
 	},
 
-	setKeyset: function (e) {
-		if (e) {
-			this.model = this.collection.get($(e.currentTarget).find(".keysetBoard").data("keyset-id")) || this.collection.first()
-		} else {
-			this.model = this.collection.first()
-		}
-		if (this.model) {
-			this.keyboard.setNewKey(this.model)
-			$("#keysetTitle").text("Current Keyset: " + this.model.attributes.title)
-		}
-	},
-
-	addKeysetItem: function (keyset) {
-		var view = new ProKeys.Views.KeysetItem({
-			model: keyset,
-		});
-		this.addSubview(".keysets", view)
-	},
-
-	addKeysetItems: function () {
-		var that = this
-		this.removeSubviews(".keysets")
-		this.collection.each(function (keyset) {
-			that.addKeysetItem(keyset)
-		});
-	},
-
 	render: function () {
 		var content = this.template({
-			keysets: this.collection
+			keyset: this.model
 		});
 		this.$el.html(content);
-		this.addKeysetItems();
 		this.attachSubviews();
 		this.$('.scroller').perfectScrollbar();
 		return this;

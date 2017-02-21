@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161222015553) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "keysets", force: :cascade do |t|
     t.integer  "user_id",      null: false
     t.string   "title",        null: false
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 20161222015553) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "keysets", ["user_id"], name: "index_keysets_on_user_id"
+  add_index "keysets", ["user_id"], name: "index_keysets_on_user_id", using: :btree
 
   create_table "notes", force: :cascade do |t|
     t.string   "sound_url"
@@ -69,7 +72,7 @@ ActiveRecord::Schema.define(version: 20161222015553) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "users", ["session_token"], name: "index_users_on_session_token"
-  add_index "users", ["username"], name: "index_users_on_username"
+  add_index "users", ["session_token"], name: "index_users_on_session_token", using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end

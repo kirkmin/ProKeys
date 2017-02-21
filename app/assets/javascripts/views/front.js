@@ -46,10 +46,11 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 			audio.pause()
 			audio.currentTime = 0;
 			$(audio).data("playing", false)
-		} else if (audio && !$(audio).data("playing")) {
-			debugger
-			$(audio).data("playing", false)
 		}
+		// else if (audio && !$(audio).data("playing")) {
+		// 	debugger
+		// 	$(audio).data("playing", false)
+		// }
 	},
 
 	remove: function (e) {

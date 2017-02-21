@@ -234,12 +234,12 @@ html {
 }
 
 .keysets {
-  position: relative;
+  display: inline-block;
   padding-bottom: 8px;
   white-space: nowrap;
 }
 
-.keysetitem {
+.keysetitem, #newKeyset {
   text-align: center;
   overflow: hidden;
   display: inline-block;
@@ -261,8 +261,11 @@ html {
   margin: 0 auto;
 }
 
+#customizeTitle {
+  text-align: center;
+}
+
 #saveDiv {
-  float: right;
   display: inline-block;
   text-align: center;
   background: #fafafa;
@@ -272,14 +275,12 @@ html {
 #saveDiv div {
   display: inline-block;
   overflow: hidden;
-  vertical-align: middle;
 }
 
 #saveDiv input {
   background: #eee;
 }
 #saveDiv button {
-  vertical-align: middle;
   background-color:#2dabf9;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
@@ -304,4 +305,9 @@ html {
 #customizeTitle h1 {
   display: inline-block;
   float: left;
+}
+
+.keysetContainer {
+  white-space: nowrap;
+  position: relative
 }
