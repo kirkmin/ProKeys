@@ -1,4 +1,12 @@
 ProKeys.Utils.noteAnimation = {
+	imagePath : {
+		1: "<%= asset_path('note1.png') %>",
+		2: "<%= asset_path('note2.png') %>",
+		3: "<%= asset_path('note3.png') %>",
+		4: "<%= asset_path('note4.png') %>",
+		5: "<%= asset_path('note5.png') %>",
+		6: "<%= asset_path('note6.png') %>"
+	},
 
 	loopNote: function (num) {
 		var rand = Math.round(Math.random() * 3500),
@@ -12,19 +20,21 @@ ProKeys.Utils.noteAnimation = {
 	createNote: function (num) {
 		var top = Math.floor(Math.random() * 50),
 			left = Math.floor(Math.random() * 87),
-			number = Math.floor(Math.random() * 6) + 1
+			number = Math.floor(Math.random() * 6) + 1,
+			source = this.imagePath[number],
+
 		$note = $( '<img />', {
 			class: 'note',
-			src: "assets/note" + number + ".png",
+			src: source,
 			style: "left:" + left + "%; top:" + top + "%;",
 			draggable: false
 		});
 		var name = "#notes" + num
 		$(name).append( $note );
-		this.animateNote();
+		this.animateNote($note);
 	},
 
-	animateNote: function () {
+	animateNote: function ($note) {
 		var height = $note.height() * 2,
 			width = $note.width() * 2
 		$(".note").animate(
