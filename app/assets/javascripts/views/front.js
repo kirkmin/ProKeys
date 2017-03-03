@@ -33,7 +33,6 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 		if (audio && !$(audio).data("playing")) {
 			$(audio).data("playing", true)
 			audio.play().catch(function (e) {
-				debugger
 				console.log("Caught Chrome error DOMException")
 				this.audios[e.keyCode] = new Audio(this.soundPath[this.defaultKeys[e.keyCode]])
 				// $(this).trigger("DOMException", [e.keyCode]) // insure that there is audio & is ready to play on next press...
