@@ -16,12 +16,12 @@
 
 .wrapper {
 	display: block;
-    height: 100%;
+    height: calc(100vh - 55.45px);
     width: 100%
 }
 
 #notesContainer {
-	height: 250px;
+	height: 50%;
 	width: 100%;
     overflow: hidden;
 }
