@@ -14,6 +14,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
 		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
+		this.listenTo(this.model, 'sync', this.render)
 	},
 
 	saveKeyset: function (e) {
