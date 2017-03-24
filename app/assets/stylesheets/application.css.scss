@@ -133,6 +133,12 @@ img {
 	padding: 16px
 }
 
+.flashSuccess {
+    background-color: rgb(71, 255, 126); /* Fallback color */
+    background-color: rgba(71, 255, 126,0.4); /* Black w/ opacity */
+    padding: 16px
+}
+
 .closeFlash {
 	background-color: transparent;
     color: white;

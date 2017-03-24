@@ -1,5 +1,7 @@
 ProKeys.Views.Record = Backbone.CompositeView.extend({
 	template: JST['record'],
+	className: "margin",
+
 
 	initialize: function () {
 	},

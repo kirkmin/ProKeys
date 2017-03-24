@@ -1,5 +1,7 @@
 ProKeys.Views.PostIndex = Backbone.CompositeView.extend({
 	template: JST['post_index'],
+	className: "margin",
+
 
 	initialize: function () {
 	},

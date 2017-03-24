@@ -1,5 +1,6 @@
 ProKeys.Views.Account = Backbone.CompositeView.extend({
 	template: JST['account'],
+	className: "margin",
 
 	events: {
 		"click .keysetitem" : "keysetItemModal",
