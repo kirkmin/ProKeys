@@ -5,11 +5,7 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 		this.makeAudio();
 	    $(document).on('keydown', _.bind(this.soundOn, this));
 	    $(document).on('keyup', _.bind(this.soundOff, this));
-	    // $(this).on("DOMException", function (e, code) {
-	    // 	this.audios[code] = this.audios[code] || new Audio('../assets/notes/' + this.defaultKeys[code] + '.mp3')
-	    // 	this.audios[code].pause()
-	    // 	$(this.audios[code]).data("playing", false)
-	    // })
+
 	},
 
 	render: function () {
@@ -35,7 +31,6 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 			audio.play().catch(function (e) {
 				console.log("Caught Chrome error DOMException")
 				this.audios[e.keyCode] = new Audio(this.soundPath[this.defaultKeys[e.keyCode]])
-				// $(this).trigger("DOMException", [e.keyCode]) // insure that there is audio & is ready to play on next press...
 			}.bind(this, event));
 		}
 	},
@@ -47,9 +42,6 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 			audio.currentTime = 0;
 			$(audio).data("playing", false)
 		}
-		// else if (audio && !$(audio).data("playing")) {
-		// 	$(audio).data("playing", false)
-		// }
 	},
 
 	remove: function (e) {

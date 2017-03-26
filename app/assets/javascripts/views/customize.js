@@ -13,8 +13,36 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mousedown', _.bind(this.getPiano, this));
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
+	    $(document).on('keydown', _.bind(this.soundOn, this));
+	    $(document).on('keyup', _.bind(this.soundOff, this));
 		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
 		this.listenTo(this.model, 'sync', this.render)
+	},
+
+	soundOn: function (event) {
+		var audio = this.audios[this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode]]
+		if (audio && !$(audio).data("playing")) {
+			$(audio).data("playing", true)
+			audio.play().catch(function (e) {
+				console.log("Caught Chrome error DOMException")
+				this.audios[e.keyCode] = new Audio(this.soundPath[this.defaultKeys[e.keyCode]])
+			}.bind(this, event));
+		} else if (event.keyCode == 16) {
+			$("#keyboard label .hover").css({"display" : "inline", "color" : "blue"})
+			$("#keyboard label .not").css("display", "none")
+		}
+	},
+
+	soundOff: function (event) {
+		var audio = this.audios[this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode]]
+		if (audio && $(audio).data("playing")) {
+			audio.pause()
+			audio.currentTime = 0;
+			$(audio).data("playing", false)
+		} else if (event.keyCode == 16) {
+			$("#keyboard label .hover").css("display", "none")
+			$("#keyboard label .not").css("display", "inline")
+		}
 	},
 
 	saveKeyset: function (e) {
@@ -34,7 +62,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	setKeyboard: function (e) {
 		if (this.note && !this.note.length) {
 			if ($.contains($("#keyboard")[0], e.target)) {
-				this.keyboard.setNewNote(this.note, $(e.target).find("span")[0] || $(e.target)[0])
+				this.keyboard.setNewNote(this.note, $(e.target).find("span")[0] || $(e.target)[0], this)
 			}
 			document.body.removeChild(this.note);
 			this.note = null
@@ -77,3 +105,5 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	    Backbone.View.prototype.remove.call(this);
 	}
 });
+
+_.extend(ProKeys.Views.Customize.prototype, ProKeys.Utils.SoundObjects);

@@ -1,6 +1,5 @@
 ProKeys.Views.About = Backbone.CompositeView.extend({
 	template: JST['about'],
-	className: "margin",
 
 
 	initialize: function () {

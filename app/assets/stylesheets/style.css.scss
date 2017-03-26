@@ -101,12 +101,10 @@ h3 {
 h4 {
 	font-size: 1em;
 	line-height: 1.56;
-	text-transform: uppercase;
 }
 		
 h3,h4 {      
 	font-weight: 300;
-	text-transform: uppercase;
 }
 
 article,
@@ -230,8 +228,9 @@ input {
     padding: .65em 3.3%;
 }
 
-#nav #title {
+#nav #navTitle {
 	padding: 0;
+	float: left;
 }
 
 #nav h3 {
@@ -304,6 +303,14 @@ input {
 
 @media screen and (min-width: 45em) {
 
+	.fadeBack {
+		padding: 0 5.5%;
+	}
+
+	#nav #navTitle {
+		padding: .65em .65em;
+	}
+
 	.margin {
 		margin: 0 5.5%;
 	}
@@ -311,21 +318,16 @@ input {
     #nav label {
         display: none;
     }
-	
 
 	#nav {
 	    padding: 0 5.5%;
 	}
 	
-    #nav h3 {
-         padding: .65em;
-    }
-	
     #nav label {
         display: none;
     }
 	
-    #nav nav, #nav #title {
+    #nav nav {
     	display: inline;
         height: auto;
     }
@@ -383,14 +385,16 @@ input {
 }
 
 .fadeBack {
-	background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 21%, rgba(255,255,255,1) 39%, rgba(255,255,255,0) 100%);
-	background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 21%,rgba(255,255,255,1) 39%,rgba(255,255,255,0) 100%);
-	background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 21%,rgba(255,255,255,1) 39%,rgba(255,255,255,0) 100%);
+	padding: 0 3.3%;
+	text-align: center;
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+	background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+
 }
 
 #welcome h1 {
-	text-align: center;
     -webkit-animation: fadein 3s ease; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 3s ease; /* Firefox < 16 */
         -ms-animation: fadein 3s ease; /* Internet Explorer */
@@ -399,7 +403,6 @@ input {
 }
 
 #welcome h2 {
-	text-align: center;
 	opacity: 0;
     -webkit-animation: fadein 3s ease 3s forwards; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 3s ease 3s forwards; /* Firefox < 16 */

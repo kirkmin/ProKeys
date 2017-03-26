@@ -29,7 +29,7 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	createNewKeyset: function (e) {4
 		event.preventDefault();
 		this.collection.create({
-				title: $(".newKeysetForm #title").val()
+				title: $("#keysetTitle").val()
 			}, { wait: true,
 				error: function (model, response) {
 					$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>')
