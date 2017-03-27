@@ -171,11 +171,13 @@ box-shadow: 0px 0px 0px white, 5px 5px 7px -1px #eee inset;
   bottom: 0;
 }
 
-#keyboard label:hover .not{
+#keyboard label:hover .not,
+#keyboard label .not.active {
   display: none;
 }
 
-#keyboard label:hover .hover{
+#keyboard label:hover .hover,
+#keyboard label .active {
   color: blue;
   display: inline;
 }

@@ -1,5 +1,6 @@
 ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	template: JST['customize'],
+	className: "margin",
 
 	events: {
 		"click #save" : "saveKeyset",
@@ -28,8 +29,8 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 				this.audios[e.keyCode] = new Audio(this.soundPath[this.defaultKeys[e.keyCode]])
 			}.bind(this, event));
 		} else if (event.keyCode == 16) {
-			$("#keyboard label .hover").css({"display" : "inline", "color" : "blue"})
-			$("#keyboard label .not").css("display", "none")
+			$("#keyboard label .hover").addClass("active")
+			$("#keyboard label .not").addClass("active")
 		}
 	},
 
@@ -40,8 +41,8 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 			audio.currentTime = 0;
 			$(audio).data("playing", false)
 		} else if (event.keyCode == 16) {
-			$("#keyboard label .hover").css("display", "none")
-			$("#keyboard label .not").css("display", "inline")
+			$("#keyboard label .hover").removeClass("active")
+			$("#keyboard label .not").removeClass("active")
 		}
 	},
 
