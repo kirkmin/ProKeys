@@ -32,7 +32,7 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 				title: $("#keysetTitle").val()
 			}, { wait: true,
 				error: function (model, response) {
-					$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>')
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
 				}
 			}
 		)

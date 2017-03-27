@@ -2,8 +2,8 @@
 	ProKeys.currentUserId = <%= @user.id %>
 	$(document).trigger('log-in');
 	$("#nav_grid").html("<%= escape_javascript(render partial: 'layouts/navbar') %>");
-	
+	ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Welcome back! You are logged in!</div>'))
 <% else %>
 	$("#logInModal").css("display", "none")
-	$("#error_grid").html("<%= escape_javascript(render partial: 'layouts/error') %>");
+	ProKeys.flashOut($("<%= escape_javascript(render partial: 'layouts/error') %>"))
 <% end %>

@@ -43,7 +43,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
 
           this._swapView(view);
         } else {
-          $("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>')
+          ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>'))
           window.history.back()
         }
       }.bind(this)
@@ -59,7 +59,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
 
           this._swapView(view);
         } else {
-          $("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>')
+          ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>'))
           window.history.back()
         }
       }.bind(this)
@@ -80,7 +80,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
 
           this._swapView(view);
         } else {
-          $("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>')
+          ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Please Log In to access this Page</div>'))
           window.history.back()
         }
       }.bind(this)

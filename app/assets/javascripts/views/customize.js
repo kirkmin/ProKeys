@@ -53,9 +53,9 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		this.model.save(attrs, {
 			success: function () {
 				that.keyboard.setNewKey(that.model)
-				$("#error_grid").prepend('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>')
+				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>'))
 			}, error: function (model, response) {
-				$("#error_grid").prepend('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>')
+				ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>'))
 			}
 		})
 	},

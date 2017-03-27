@@ -9,7 +9,26 @@ window.ProKeys = {
     new ProKeys.Routers.Router();
     Backbone.history.start();
   },
+
+  //flash auto disappear
+  flashOut : function ($flash) {
+    $("#error_grid").prepend($flash)
+    setTimeout( 
+      function() {         
+        $flash.fadeTo("slow", 0.00, function(){ //fade
+          $(this).slideUp("slow", function() { //slide up
+            $(this).remove(); //then remove from the DOM
+          });
+      }); }
+      , 5000
+    );
+  },
+
+  lol : function () {
+    console.log("LOL")
+  }
 };
+
 $(document).ready(function(){
   // Parallax
   $("body").mousemove(function(e){
