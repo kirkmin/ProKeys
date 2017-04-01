@@ -45,16 +45,18 @@ img {
 
 /* The Modal (background) */
 .modal {
+    box-sizing: border-box;
     display: none; /* Hidden by default */
-    position: absolute; /* Stay in place */
+    position: fixed; /* Stay in place */
+    height: 100%;
     z-index: 10; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding: 10vh 10vw; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     min-height: 100%;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: hidden;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     clear: both;
@@ -63,11 +65,9 @@ img {
 /* Modal Content */
 .modal-content {
     position: relative;
+    height: 100%;
     background-color: #fefefe;
-    margin: auto;
-    padding: 0;
     border: 1px solid #888;
-    width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -91,8 +91,12 @@ img {
 	background-color: transparent;
     color: white;
     float: right;
-    font-size: 28px;
+    font-size: 1.382em;
     font-weight: bold;
+}
+
+.modal span.close {
+    font-size: 2.126em;
 }
 
 .close:hover,
@@ -102,26 +106,31 @@ img {
     cursor: pointer;
 }
 
+.modal form {
+    height: 80%
+}
+
 .modal-header {
     padding: 2px 16px;
-    height: 50px;
+    height: 20%;
     background-color: #a3a3a3;
     color: white;
 }
 
 .modal-body {
-	min-height: 100px;
+    height: 80%;    
 	padding: 2px 16px;
 }
 
 .modal-footer {
     padding: 2px 16px;
-    height: 50px;
+    height: 20%;
     background-color: #a3a3a3;
     color: white;
 }
 
 .modal-body input {
+    width: 80%;
 	margin: 10px;
 	padding: 10px;
 }
@@ -143,7 +152,7 @@ img {
 	background-color: transparent;
     color: white;
     float: right;
-    font-size: 20px;
+    font-size: 1.382em;
     font-weight: bold;
 }
 
@@ -165,4 +174,12 @@ img {
 
 .about article {
     padding-top: 20px;
+}
+
+@media screen and (min-width: 45em) {
+    .modal {
+        padding: 20vh 20vw;
+    }
+
+
 }
