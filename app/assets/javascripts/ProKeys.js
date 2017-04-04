@@ -20,13 +20,9 @@ window.ProKeys = {
             $(this).remove(); //then remove from the DOM
           });
       }); }
-      , 5000
+      , 10000
     );
   },
-
-  lol : function () {
-    console.log("LOL")
-  }
 };
 
 $(document).ready(function(){
@@ -39,12 +35,14 @@ $(document).ready(function(){
 
   // Modal logic
   $("#nav_grid").on("click", "#logInLink", function() {
-    $("#logInModal").css("display", "block")
+    var height = $("html").height();
+    $("#logInModal").css({"display" : "block", "height" : height})
     $("#toggle")[0].checked = false
   })
 
   $("#nav_grid").on("click", "#signUpLink", function() {
-    $("#signUpModal").css("display", "block")
+    var height = $("html").height();
+    $("#signUpModal").css({"display" : "block", "height" : height})
     $("#toggle")[0].checked = false
   })
 

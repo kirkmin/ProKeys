@@ -5,6 +5,8 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	events: {
 		"click .keysetitem" : "keysetItemModal",
 		"click .customize" : "customize",
+		"click .edit" : "edit",
+		"click .delete" : "delete",
 		"click #newKeyset" : "newKeysetModal",
 		"click #newKeysetSubmit" : "createNewKeyset"
 	},
@@ -16,14 +18,34 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	keysetItemModal: function (e) {
 		var title = $(e.currentTarget).find("h2").text()
 		var id = $(e.currentTarget).find(".keysetBoard").data("keyset-id")
+		var height = $("html").height();
 		$("#keysetItemModal").find("h2").text("Edit: " + title)
 		$("#keysetItemModal").data("keyset-id", id)
-		$("#keysetItemModal").css("display", "block")
+		$("#keysetItemModal").css({"display" : "block", "height" : height})
 	},
 
 	customize: function (e) {
 		var id = $("#keysetItemModal").data("keyset-id")
 		Backbone.history.navigate('customize/' + id, {trigger:true});
+	},
+
+
+	edit: function (e) {
+		debugger
+		e.preventDefault();
+		var that = this;
+		this.model.save(attrs, {
+			success: function () {
+				that.keyboard.setNewKey(that.model)
+				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>'))
+			}, error: function (model, response) {
+				ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>'))
+			}
+		})
+	},
+
+	delete: function (e) {
+		debugger
 	},
 
 	createNewKeyset: function (e) {4
@@ -40,7 +62,8 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	},
 
 	newKeysetModal: function () {
-		$("#newKeysetModal").css("display", "block")
+		var height = $("html").height();
+		$("#newKeysetModal").css({"display" : "block", "height" : height})
 	},
 
 	addKeysetItem: function (keyset) {
