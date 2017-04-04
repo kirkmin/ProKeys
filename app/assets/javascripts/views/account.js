@@ -4,21 +4,23 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 
 	events: {
 		"click .keysetitem" : "keysetItemModal",
-		"click .customize" : "customize",
-		"click .edit" : "edit",
-		"click .delete" : "delete",
+		"click #customize" : "customize",
+		"click #edit" : "edit",
+		"click #delete" : "delete",
 		"click #newKeyset" : "newKeysetModal",
 		"click #newKeysetSubmit" : "createNewKeyset"
 	},
 
 	initialize: function () {
-		this.listenTo(this.collection, 'sync add', this.render)
+		this.listenTo(this.collection, 'sync add remove', this.render)
 	},
 
 	keysetItemModal: function (e) {
 		var title = $(e.currentTarget).find("h2").text()
 		var id = $(e.currentTarget).find(".keysetBoard").data("keyset-id")
+		this.keyset = this.collection.get(id)
 		var height = $("html").height();
+		$("#editKeysetTitle").val(title)
 		$("#keysetItemModal").find("h2").text("Edit: " + title)
 		$("#keysetItemModal").data("keyset-id", id)
 		$("#keysetItemModal").css({"display" : "block", "height" : height})
@@ -31,29 +33,38 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 
 
 	edit: function (e) {
-		debugger
-		e.preventDefault();
-		var that = this;
-		this.model.save(attrs, {
-			success: function () {
-				that.keyboard.setNewKey(that.model)
-				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>'))
-			}, error: function (model, response) {
-				ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>'))
-			}
+		this.keyset.save({
+				title: $("#editKeysetTitle").val()
+			}, {
+				success: function (model) {
+					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Successfully edited ' + model.attributes.title + '!</div>'))
+				}, error: function (model, response) {
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
+				}
 		})
 	},
 
 	delete: function (e) {
-		debugger
+		var result = confirm("Are you sure you want to delete the keyset " + this.keyset.attributes.title)
+		if (result) {
+			this.keyset.destroy({
+				success: function () {
+					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Delete Successful!</div>'))
+				}, error: function (model, response) {
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
+				}
+			});
+		}
 	},
 
 	createNewKeyset: function (e) {4
 		event.preventDefault();
 		this.collection.create({
-				title: $("#keysetTitle").val()
+				title: $("#newKeysetTitle").val()
 			}, { wait: true,
-				error: function (model, response) {
+				success: function (model) {
+					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Created new keyset ' + model.attributes.title +'!</div>'))
+				}, error: function (model, response) {
 					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
 				}
 			}

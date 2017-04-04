@@ -52,6 +52,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		var attrs = this.keyboard.getKeyset()
 		this.model.save(attrs, {
 			success: function () {
+				debugger
 				that.keyboard.setNewKey(that.model)
 				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>'))
 			}, error: function (model, response) {
@@ -103,6 +104,8 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).unbind('mousemove');
 	    $(document).unbind('mousedown');
 	    $(document).unbind('mouseup');
+	    $(document).unbind('keydown');
+	    $(document).unbind('keyup');
 	    Backbone.View.prototype.remove.call(this);
 	}
 });

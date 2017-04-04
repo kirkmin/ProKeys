@@ -48,8 +48,7 @@ img {
     box-sizing: border-box;
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
-    height: 100%;
-    min-height: 1000px;
+    min-height: 100%;
     z-index: 10; /* Sit on top */
     padding: 10vh 10vw 0 10vw; /* Location of the box */
     left: 0;
@@ -146,7 +145,7 @@ img {
 	background-color: transparent;
     color: white;
     float: right;
-    font-size: 1.382em;
+    font-size: 1em;
     font-weight: bold;
 }
 
