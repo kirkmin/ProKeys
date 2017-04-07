@@ -21,7 +21,11 @@ module Api
 		end
 
 		def show
-			@keyset = current_user.keysets.find(params[:id])
+			if (params[:id] == "first")
+				@keyset = current_user.keysets.first
+			else
+				@keyset = current_user.keysets.find(params[:id])
+			end
 
 			if @keyset
 				render json: @keyset

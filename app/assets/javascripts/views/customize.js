@@ -1,9 +1,9 @@
 ProKeys.Views.Customize = Backbone.CompositeView.extend({
 	template: JST['customize'],
-	className: "margin",
 
 	events: {
 		"click #save" : "saveKeyset",
+		"click .keysetitem" : "setKeyset"
 	},
 
 	initialize: function () {
@@ -16,8 +16,9 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
 	    $(document).on('keydown', _.bind(this.soundOn, this));
 	    $(document).on('keyup', _.bind(this.soundOff, this));
-		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
+		this.listenTo(this.collection, 'sync', this.render)
 		this.listenTo(this.model, 'sync', this.render)
+		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
 	},
 
 	soundOn: function (event) {
@@ -52,8 +53,6 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		var attrs = this.keyboard.getKeyset()
 		this.model.save(attrs, {
 			success: function () {
-				debugger
-				that.keyboard.setNewKey(that.model)
 				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>'))
 			}, error: function (model, response) {
 				ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>'))
@@ -80,6 +79,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 
 	getPiano: function (e) {
 		if ($.contains($("#piano")[0], e.target)) {
+			debugger
 			var note = $(e.target).find("span")[0] || $(e.target)[0]
 			this.note = document.createElement("span")
 			this.note.id = "draggable"
@@ -87,7 +87,30 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		    this.note.style.left = (e.clientX - 15) + 'px';
 			this.note.innerHTML = note.innerHTML
 			document.body.appendChild(this.note);
+		} else if ($.contains($("#keyboard")[0], e.target)) {
+
 		}
+	},
+
+	setKeyset: function (e) {
+		this.model = this.collection.get($(e.currentTarget).find(".keysetBoard").data("keyset-id"))
+		this.keyboard.setNewKey.call(this, this.model)
+		this.render()
+	},
+
+	addKeysetItem: function (keyset) {
+		var view = new ProKeys.Views.KeysetItem({
+			model: keyset,
+		});
+		this.addSubview(".keysets", view)
+	},
+
+	addKeysetItems: function () {
+		var that = this
+		this.removeSubviews(".keysets")
+		this.collection.each(function (keyset) {
+			that.addKeysetItem(keyset)
+		});
 	},
 
 	render: function () {
@@ -96,6 +119,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		});
 		this.$el.html(content);
 		this.attachSubviews();
+		this.addKeysetItems();
 		this.$('.scroller').perfectScrollbar();
 		return this;
 	},

@@ -11,6 +11,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     '': 'front',
     'about' : 'about',
     'customize/:id' : 'customize',
+    'customize' : 'customize',
     'record' : 'record',
     'account' : 'account',
     'posts/index' : 'postIndex'
@@ -34,10 +35,13 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     $.ajax("session", {
       type: "get",
       success: function (data) {
-        if (data && id) {
-          var keyset = ProKeys.Collections.keysets.getOrFetch(id)
+        if (data) {
+          var keysets = ProKeys.Collections.keysets
+          var keyset = id ? keysets.getOrFetch(id) : keysets.getFirst()
+          keysets.fetch();
 
           var view = new ProKeys.Views.Customize({
+            collection: keysets,
             model: keyset
           });
 

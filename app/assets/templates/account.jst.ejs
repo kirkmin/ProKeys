@@ -1,49 +1,54 @@
-<h1>Your Keysets</h1>
-<div class="scroller keysetContainer">
-	<div id="newKeyset">Create new</div>
-	<div class="keysets"></div>
-</div>
-<h1>Your Recordings</h1>
-<div class="scroller recordings">
-</div>
-
-<!-- modal new keyset -->
-<div class="modal" id="newKeysetModal">
-	<div class="modal-content">
-		<div class="modal-header">
-			<span class="close">&times;</span>
-			<h2>New Keyset</h2>
+<section class="account">
+	<article class="fadeBack">
+		<div class="margin">
+			<h1>Your Keysets</h1>
+			<div class="scroller keysetContainer">
+				<div id="newKeyset" class="Btn BtnGreen"><h3>Create new</h3></div>
+				<div class="keysets"></div>
+			</div>
+			<h1>Your Recordings</h1>
+			<div class="scroller recordings">
+			</div>
 		</div>
-		<form class="newKeysetForm">
-	      	<div class="modal-body">
-				<input id="newKeysetTitle" placeholder="Title" type="text" autofocus>
-	      	</div>
-	  		<div class="modal-footer">
-	        	<button class="close">Close</button>
-	        	<input type="submit" class="Btn" id="newKeysetSubmit" value="Create New Keyset">
-	  		</div>
-		</form>
-	</div>
-</div>
+	</article>
 
-<!-- modal keyset items -->
-<div class="modal" id="keysetItemModal">
-	<div class="modal-content">
-		<div class="modal-header">
-			<span class="close">&times;</span>
-			<h2></h2>
+	<!-- modal new keyset -->
+	<div class="modal" id="newKeysetModal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h3>New Keyset</h3>
+			</div>
+			<form class="newKeysetForm">
+		      	<div class="modal-body">
+					<input id="newKeysetTitle" placeholder="Title" type="text" autofocus>
+		      	</div>
+		  		<div class="modal-footer">
+		        	<button class="close">Close</button>
+		        	<input type="submit" class="Btn" id="newKeysetSubmit" value="Create New Keyset">
+		  		</div>
+			</form>
 		</div>
-		<form class="KeysetItemForm">
-	      	<div class="modal-body">
-	      		<input id="editKeysetTitle" placeholder="Title" type="text" autofocus>
-				<button class="Btn" id="edit">Edit!</button>
-	      	</div>
-	  		<div class="modal-footer">
-				<button class="Btn" id="customize">Customize!</button>
-				<button class="BtnRed" id="delete">Delete!</button>
-	        	<button class="close">Close</button>
-	  		</div>
-		</form>
 	</div>
-</div>
 
+	<!-- modal keyset items -->
+	<div class="modal" id="keysetItemModal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h2></h2>
+			</div>
+			<form class="KeysetItemForm">
+		      	<div class="modal-body">
+		      		<input id="editKeysetTitle" placeholder="Title" type="text" autofocus>
+					<button class="Btn" id="edit">Edit!</button>
+		      	</div>
+		  		<div class="modal-footer">
+					<button class="Btn" id="customize">Customize!</button>
+					<button class="Btn BtnRed" id="delete">Delete!</button>
+		        	<button class="close">Close</button>
+		  		</div>
+			</form>
+		</div>
+	</div>
+</section>

@@ -1,7 +1,7 @@
 ProKeys.Views.KeysetItem = Backbone.View.extend({
 	template: JST['keysetitem'],
 
-	className: "keysetitem",
+	className: "keysetitem Btn",
 
 	render: function () {
 		var content = this.template({

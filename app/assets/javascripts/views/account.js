@@ -1,6 +1,5 @@
 ProKeys.Views.Account = Backbone.CompositeView.extend({
 	template: JST['account'],
-	className: "margin",
 
 	events: {
 		"click .keysetitem" : "keysetItemModal",
@@ -16,7 +15,7 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	},
 
 	keysetItemModal: function (e) {
-		var title = $(e.currentTarget).find("h2").text()
+		var title = $(e.currentTarget).find("h3").text()
 		var id = $(e.currentTarget).find(".keysetBoard").data("keyset-id")
 		this.keyset = this.collection.get(id)
 		var height = $("html").height();
@@ -34,13 +33,13 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 
 	edit: function (e) {
 		this.keyset.save({
-				title: $("#editKeysetTitle").val()
-			}, {
-				success: function (model) {
-					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Successfully edited ' + model.attributes.title + '!</div>'))
-				}, error: function (model, response) {
-					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
-				}
+			title: $("#editKeysetTitle").val()
+		}, {
+			success: function (model) {
+				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Successfully edited ' + model.attributes.title + '!</div>'))
+			}, error: function (model, response) {
+				ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
+			}
 		})
 	},
 

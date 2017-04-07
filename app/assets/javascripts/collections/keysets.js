@@ -17,7 +17,24 @@ ProKeys.Collections.Keysets = Backbone.Collection.extend({
     }
 
     return keyset;
+  },
+
+  getFirst: function () {
+    var keyset = this.first()
+
+    if(!keyset) {
+      keyset = new ProKeys.Models.Keyset({ id: "first" })
+      keyset.fetch({
+        success: function () {
+          this.add(keyset);
+        }.bind(this)
+      });
+    } else {
+      keyset.fetch();
+    }
+
+    return keyset;
   }
 });
 
-ProKeys.Collections.keysets = new ProKeys.Collections.Keysets
+ProKeys.Collections.keysets = new ProKeys.Collections.Keysets()

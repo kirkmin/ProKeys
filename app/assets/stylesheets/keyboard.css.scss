@@ -250,18 +250,17 @@ html {
   white-space: nowrap;
 }
 
-.keysetitem, #newKeyset {
+.keysetitem.Btn, #newKeyset.Btn {
+  vertical-align: top;
   text-align: center;
-  overflow: hidden;
-  display: inline-block;
-  margin: 5px 5px;
-  background: #fafafa;
-  height: 50px;
-  width: 200px;
+  width: 100px;
   cursor: pointer;
-  border: 1px solid #eee;
-  border-radius: 5px;
-  box-shadow: 5px 5px 7px -1px #ccc;
+  padding: .39em .65em;
+  margin: 0 .39em;
+}
+
+.keysetBoard {
+  overflow: hidden;
 }
 
 #clicked {
@@ -277,47 +276,29 @@ html {
 }
 
 #saveDiv {
-  display: inline-block;
-  text-align: center;
   padding: 10px 10px;
 }
 
 #saveDiv div {
-  display: inline-block;
   overflow: hidden;
 }
 
 #saveDiv input {
   background: #eee;
 }
-#saveDiv button {
-  background-color:#2dabf9;
-  -moz-border-radius:3px;
-  -webkit-border-radius:3px;
-  border-radius:3px;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:Arial;
-  font-size:15px;
-  padding: 5px 10px;
-  text-decoration:none;
-  text-shadow:0px 1px 0px #263666;
-}
-#saveDiv button:hover {
-  background-color:#0688fa;
-}
-#saveDiv button:active {
-  position:relative;
-  top:1px;
-}
 
 #customizeTitle h1 {
-  display: inline-block;
-  float: left;
+  display: block;
 }
 
 .keysetContainer {
+  padding-top: .39em;
+  height: 55px;
+  text-align: left;
   white-space: nowrap;
   position: relative
+}
+
+.account h1 {
+  text-align: left;
 }
