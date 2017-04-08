@@ -55,8 +55,11 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 			success: function () {
 				ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Save successful!</div>'))
 			}, error: function (model, response) {
-				ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Unable to save. Found unacceptable value for note.</div>'))
-			}
+				if (response.responseJSON[0]) {
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
+				} else {
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>No change has been detected</div>'))
+				}			}
 		})
 	},
 

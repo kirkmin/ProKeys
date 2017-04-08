@@ -36,7 +36,8 @@ module Api
 
 		def update
 			@keyset = current_user.keysets.find(params[:id])
-			if @keyset.update(keyset_params)
+			@keyset.attributes = keyset_params
+			if @keyset.changed? && @keyset.save
 				render json: @keyset
 			else
 				render json: { errors: @keyset.errors.full_messages }, status: :unprocessable_entity
