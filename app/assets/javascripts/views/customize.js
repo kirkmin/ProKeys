@@ -67,7 +67,11 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 			}
 			document.body.removeChild(this.note);
 			this.note = null
-		};
+		}
+		if (this.audio) {
+			this.audio.pause();
+			this.audio = null
+		}
 	},
 
 	moveNote: function (e) {
@@ -79,8 +83,10 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 
 	getPiano: function (e) {
 		if ($.contains($("#piano")[0], e.target)) {
-			debugger
 			var note = $(e.target).find("span")[0] || $(e.target)[0]
+			this.audio = new Audio(this.soundPath[note.innerHTML.replace("♭","b")])
+			this.audio.play()
+			if (this.note) { document.body.removeChild(this.note) }
 			this.note = document.createElement("span")
 			this.note.id = "draggable"
 		    this.note.style.top = (e.clientY - 15) + 'px';
@@ -88,7 +94,9 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 			this.note.innerHTML = note.innerHTML
 			document.body.appendChild(this.note);
 		} else if ($.contains($("#keyboard")[0], e.target)) {
-
+			var note = $(e.target).closest("label")[0].htmlFor
+			this.audio = this.audios[note]
+			if (this.audio) { this.audio.play() }
 		}
 	},
 

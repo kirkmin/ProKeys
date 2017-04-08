@@ -8,7 +8,6 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 	},
 
 	setNewKey: function (model) {
-		debugger
 		var that = this;
 		this.audios = {}
 		_.each(model.attributes, function (value, key) {

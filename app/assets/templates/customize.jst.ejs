@@ -1,20 +1,27 @@
-<div class="scroller keysetContainer margin">
-	<div class="keysets"></div>
-</div>
-<div id="customizeTitle" class="clearfix fadeBack">
-	<div id="saveDiv">
-		<h1>
-			<div id="keysetTitle">
-				<span>Current Keyset:</span>
-				<span><%= keyset.attributes.title %></span>
-			</div>
-		</h1>
-		<button id="save" class="Btn">Save</button>
+<section>
+	<article class="fadeBack">
+	<h1>Your Keysets</h1>
+	<div class="scroller keysetContainer margin">
+		<div class="keysets"></div>
 	</div>
-</div>
-<div class="margin">
-	<div class="scroller" id="keyboard">
+	<div id="customizeTitle" class="clearfix">
+		<div id="saveDiv">
+			<h1>
+				<div id="keysetTitle">
+					<span>Current Keyset:</span>
+					<span><%= keyset.attributes.title %></span>
+				</div>
+			</h1>
+			<button id="save" class="Btn BtnGreen">Save</button>
+		</div>
 	</div>
-	<div class="scroller" id="piano">
+	</article>
+	<article>
+	<div class="margin">
+		<div class="scroller" id="keyboard">
+		</div>
+		<div class="scroller" id="piano">
+		</div>
 	</div>
-</div>
+	</article>
+</section>
