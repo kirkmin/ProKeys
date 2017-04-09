@@ -20,7 +20,7 @@ ProKeys.Collections.Keysets = Backbone.Collection.extend({
   },
 
   getFirst: function () {
-    var keyset = this.first()
+    var keyset = this.last()
 
     if(!keyset) {
       keyset = new ProKeys.Models.Keyset({ id: "first" })

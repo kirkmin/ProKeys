@@ -14,14 +14,14 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		$(document).on('mousedown', _.bind(this.getPiano, this));
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
-	    $(document).on('keydown', _.bind(this.soundOn, this));
-	    $(document).on('keyup', _.bind(this.soundOff, this));
+	    $(document).on('keydown', _.bind(this.keyDown, this));
+	    $(document).on('keyup', _.bind(this.keyUp, this));
 		this.listenTo(this.collection, 'sync', this.render)
 		this.listenTo(this.model, 'sync', this.render)
 		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
 	},
 
-	soundOn: function (event) {
+	keyDown: function (event) {
 		var audio = this.audios[this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode]]
 		if (audio && !$(audio).data("playing")) {
 			$(audio).data("playing", true)
@@ -35,7 +35,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		}
 	},
 
-	soundOff: function (event) {
+	keyUp: function (event) {
 		var audio = this.audios[this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode]]
 		if (audio && $(audio).data("playing")) {
 			audio.pause()
@@ -59,7 +59,8 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
 				} else {
 					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>No change has been detected</div>'))
-				}			}
+				}			
+			}
 		})
 	},
 
@@ -73,6 +74,7 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		}
 		if (this.audio) {
 			this.audio.pause();
+			this.audio.currentTime = 0
 			this.audio = null
 		}
 	},
@@ -134,15 +136,6 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		this.$('.scroller').perfectScrollbar();
 		return this;
 	},
-
-	remove: function (e) {
-		$(document).unbind('mousemove');
-	    $(document).unbind('mousedown');
-	    $(document).unbind('mouseup');
-	    $(document).unbind('keydown');
-	    $(document).unbind('keyup');
-	    Backbone.View.prototype.remove.call(this);
-	}
 });
 
 _.extend(ProKeys.Views.Customize.prototype, ProKeys.Utils.SoundObjects);

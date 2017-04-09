@@ -18,14 +18,14 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   front: function () {
-
+    this._documentUnbind()
     var view = new ProKeys.Views.Front();
 
     this._swapView(view);
   },
 
   about: function () {
-
+    this._documentUnbind()
     var view = new ProKeys.Views.About();
 
     this._swapView(view);
@@ -36,10 +36,12 @@ ProKeys.Routers.Router = Backbone.Router.extend({
       type: "get",
       success: function (data) {
         if (data) {
+          debugger
           var keysets = ProKeys.Collections.keysets
           var keyset = id ? keysets.getOrFetch(id) : keysets.getFirst()
           keysets.fetch();
 
+          this._documentUnbind()
           var view = new ProKeys.Views.Customize({
             collection: keysets,
             model: keyset
@@ -59,6 +61,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
       type: "get",
       success: function (data) {
         if (data) {
+          this._documentUnbind()
           var view = new ProKeys.Views.Record();
 
           this._swapView(view);
@@ -78,6 +81,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
           var keysets = ProKeys.Collections.keysets
           keysets.fetch();
 
+          this._documentUnbind()
           var view = new ProKeys.Views.Account({
             collection: keysets
           });
@@ -92,6 +96,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   postIndex: function () {
+    this._documentUnbind()
     var view = new ProKeys.Views.PostIndex();
 
     this._swapView(view);
@@ -101,5 +106,13 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     this.currentView && this.currentView.remove();
     this.currentView = view;
     this.$rootEl.html(view.render().$el);
+  },
+
+  _documentUnbind: function () {
+    $(document).off('mousedown');
+    $(document).off('mousemove');
+    $(document).off('mouseup');
+    $(document).off('keydown');
+    $(document).off('keyup');
   }
 });

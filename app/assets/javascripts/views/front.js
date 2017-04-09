@@ -5,7 +5,6 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 		this.makeAudio();
 	    $(document).on('keydown', _.bind(this.soundOn, this));
 	    $(document).on('keyup', _.bind(this.soundOff, this));
-
 	},
 
 	render: function () {
@@ -43,12 +42,6 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 			$(audio).data("playing", false)
 		}
 	},
-
-	remove: function (e) {
-	    $(document).unbind('keydown');
-	    $(document).unbind('keyup');
-	    Backbone.View.prototype.remove.call(this);
-	}
 });
 
 _.extend(ProKeys.Views.Front.prototype, ProKeys.Utils.SoundObjects);
