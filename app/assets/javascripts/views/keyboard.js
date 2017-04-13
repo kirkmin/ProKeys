@@ -11,11 +11,11 @@ ProKeys.Views.Keyboard = Backbone.View.extend({
 		var that = this;
 		this.audios = {}
 		_.each(model.attributes, function (value, key) {
-			if (value && $("#" + key).length) {
+			if (value && that.allowedKeys[key]) {
 				that.audios[key] = new Audio(that.soundPath[value])
 				$(that.audios[key]).data("playing", false)
 				$("#" + key + "+ label .hover").text(value.replace("b", "♭"))
-			} else if ($("#" + key).length) {
+			} else if (that.allowedKeys[key]) {
 				$("#" + key + "+ label .hover").text("")
 			}
 		})
