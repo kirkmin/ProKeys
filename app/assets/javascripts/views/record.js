@@ -20,6 +20,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 
 	recordModal: function () {
 		debugger
+		if ($("html").height() > $("#keysetItemModal").height()) {$("#keysetItemModal").css("height", $("html").height())}
 	},
 
 	triggerRecord: function () {

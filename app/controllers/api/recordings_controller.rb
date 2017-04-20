@@ -18,7 +18,7 @@ module Api
 
 		def index
 			@recordings = current_user.recordings
-			@render json: @recordings
+			render json: @recordings
 		end
 
 		def show

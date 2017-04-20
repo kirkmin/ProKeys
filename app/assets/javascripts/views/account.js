@@ -22,6 +22,7 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 		$("#keysetItemModal").find("h2").text("Edit: " + title)
 		$("#keysetItemModal").data("keyset-id", id)
 		$("#keysetItemModal").css("display" , "block")
+		if ($("html").height() > $("#keysetItemModal").height()) {$("#keysetItemModal").css("height", $("html").height())}
 	},
 
 	customize: function (e) {
