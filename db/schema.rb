@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222015553) do
+ActiveRecord::Schema.define(version: 20170418083934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,24 @@ ActiveRecord::Schema.define(version: 20161222015553) do
   add_index "keysets", ["user_id"], name: "index_keysets_on_user_id", using: :btree
 
   create_table "notes", force: :cascade do |t|
-    t.string   "sound_url"
+    t.integer  "recording_id", null: false
+    t.string   "pitch",        null: false
+    t.integer  "start",        null: false
+    t.integer  "duration",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "notes", ["recording_id"], name: "index_notes_on_recording_id", using: :btree
+
+  create_table "recordings", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "recordings", ["user_id"], name: "index_recordings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

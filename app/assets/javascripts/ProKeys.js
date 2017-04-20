@@ -35,14 +35,14 @@ $(document).ready(function(){
 
   // Modal logic
   $("#nav_grid").on("click", "#logInLink", function() {
-    var height = $("html").height();
-    $("#logInModal").css({"display" : "block", "height" : height})
+    $("#logInModal").css("display", "block")
+    if ($("html").height() > $("#logInModal").height()) {$("#logInModal").css("height", $("html").height())}
     $("#toggle")[0].checked = false
   })
 
   $("#nav_grid").on("click", "#signUpLink", function() {
-    var height = $("html").height();
-    $("#signUpModal").css({"display" : "block", "height" : height})
+    $("#signUpModal").css("display", "block")
+    if ($("html").height() > $("#signUpModal").height()) {$("#signUpModal").css("height", $("html").height())}
     $("#toggle")[0].checked = false
   })
 

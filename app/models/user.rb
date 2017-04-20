@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	validates :username, uniqueness: true
 
 	has_many :keysets
+	has_many :recordings
 
 	attr_reader :password
 	after_initialize :ensure_session_token
