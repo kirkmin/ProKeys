@@ -31,6 +31,16 @@ module Api
 			end
 		end
 
+		def update
+			@recording = current_user.recordings.find(params[:id])
+			@recording.attributes = recording_params
+			if @recording.changed? && @recording.save
+				render json: @recording
+			else
+				render json: { errors: @recording.errors.full_messages }, status: :unprocessable_entity
+			end
+		end
+
 		private
 		def recording_params
 			params.require(:keyset).permit(:title)

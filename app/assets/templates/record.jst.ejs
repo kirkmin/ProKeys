@@ -13,10 +13,27 @@
 					</div>
 				</h1>
 				<button id="recButton"></button>
-				<button id="save" class="Btn BtnGreen">Save</button>
+				<button id="recSave" class="Btn BtnGreen">Save</button>
 			</div>
 		</div>
 	</article>
-	<article>
-	</article>
+
+	<!-- modal save recording -->
+	<div class="modal" id="saveRecording">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h3>New Recording</h3>
+			</div>
+			<form class="recordingForm">
+		      	<div class="modal-body">
+					<input id="newRecordingTitle" placeholder="Title" type="text" autofocus>
+		      	</div>
+		  		<div class="modal-footer">
+		        	<button class="close">Close</button>
+		        	<input type="submit" class="Btn" id="createRecording" value="Create Recording">
+		  		</div>
+			</form>
+		</div>
+	</div>
 </section>

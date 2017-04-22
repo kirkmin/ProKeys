@@ -2,6 +2,7 @@ class CreateRecordings < ActiveRecord::Migration
   def change
     create_table :recordings do |t|
     	t.integer :user_id, null: false
+    	t.integer :duration, null: false
     	t.string :title, null: false
 
       	t.timestamps null: false

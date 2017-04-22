@@ -4,7 +4,8 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 	events: {
 		"click .keysetitem" : "setKeyset",
 		"click #recButton" : "triggerRecord",
-		"click #save" : "recordModal"
+		"click #recSave" : "recordModal",
+		"click #createRecording" : "createRecording"
 	},
 
 
@@ -19,8 +20,31 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 	},
 
 	recordModal: function () {
+		if (this.currentlyRecording == true) {
+			this.triggerRecord()
+		}
+		if (this.recording == undefined || this.recording == []) {
+			ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>There are no notes to record.</div>'))
+		} else {
+			$("#saveRecording").css("display" , "block")
+			if ($("html").height() > $("#saveRecording").height()) {$("#saveRecording").css("height", $("html").height())}
+		}
+	},
+
+	createRecording: function (e) {
 		debugger
-		if ($("html").height() > $("#keysetItemModal").height()) {$("#keysetItemModal").css("height", $("html").height())}
+		var title = $("#newRecordingTitle").val()
+		ProKeys.Collections.recordings.create({
+				title: title
+			}, { wait: true,
+				success: function (model) {
+					debugger
+					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Created new keyset ' + model.attributes.title +'!</div>'))
+				}, error: function (model, response) {
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
+				}
+			}
+		)
 	},
 
 	triggerRecord: function () {

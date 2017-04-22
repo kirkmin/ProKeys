@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170418083934) do
 
   create_table "recordings", force: :cascade do |t|
     t.integer  "user_id",    null: false
+    t.integer  "duration",   null: false
     t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
