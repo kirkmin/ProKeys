@@ -1,7 +1,7 @@
 class CreateNotes < ActiveRecord::Migration
   def change
     create_table :notes do |t|
-    	t.integer :recording_id, null: false
+    	t.integer :recording_id
     	t.string :pitch, null: false
     	t.integer :start, null: false
     	t.integer :duration, null: false

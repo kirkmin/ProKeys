@@ -1,8 +1,7 @@
 module Api
 	class NotesController < ApiController
 		def create
-			@recording = current_user.recordings.find([:recording_id])
-			@note = @recording.notes.new(note_params)
+			@note = Note.new(note_params)
 			if @note.save
 				render json: @note
 			else

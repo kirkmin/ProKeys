@@ -1,5 +1,5 @@
 class Note < ActiveRecord::Base
-	validates :pitch, :recording, :start, :duration, presence: true
+	validates :pitch,:start, :duration, presence: true
 	validates_inclusion_of :pitch, :in => [
 			"A1",
 			"A2",

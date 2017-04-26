@@ -17,6 +17,21 @@ ProKeys.Collections.Recordings = Backbone.Collection.extend({
     }
 
     return recording;
+  },
+
+  notes: function () {
+    if (!this._notes) {
+      this._notes = new ProKeys.Collections.Notes([], { recording: this });
+    }
+    return this._notes;
+  },
+
+  parse: function (resp) {
+    if (resp.notes) {
+      this.notes().set(resp.notes);
+      delete resp.notes;
+    }
+    return resp;
   }
 });
 

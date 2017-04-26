@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20170418083934) do
   add_index "keysets", ["user_id"], name: "index_keysets_on_user_id", using: :btree
 
   create_table "notes", force: :cascade do |t|
-    t.integer  "recording_id", null: false
+    t.integer  "recording_id"
     t.string   "pitch",        null: false
     t.integer  "start",        null: false
     t.integer  "duration",     null: false

@@ -1,5 +1,12 @@
 module Api
 	class RecordingsController < ApiController
+
+		wrap_parameters :recording, include: [
+			:title,
+			:duration,
+			:notes_array
+		]
+
 		def create
 			@recording = current_user.recordings.new(recording_params)
 
@@ -43,7 +50,7 @@ module Api
 
 		private
 		def recording_params
-			params.require(:keyset).permit(:title)
+			params.require(:recording).permit(:title, :duration, notes_array: [])
 		end
 
 	end

@@ -23,7 +23,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 		if (this.currentlyRecording == true) {
 			this.triggerRecord()
 		}
-		if (this.recording == undefined || this.recording == []) {
+		if (this.recording == undefined || this.recording.length == 0 ) {
 			ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>There are no notes to record.</div>'))
 		} else {
 			$("#saveRecording").css("display" , "block")
@@ -32,30 +32,39 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 	},
 
 	createRecording: function (e) {
-		debugger
-		var title = $("#newRecordingTitle").val()
+		e.preventDefault();
+		var title = $("#newRecordingTitle").val(),
+			duration = this.endTime.getTime() - this.startTime.getTime(),
+			that = this
 		ProKeys.Collections.recordings.create({
-				title: title
+				title: title,
+				duration: duration,
+				notes_array: that.recording
 			}, { wait: true,
 				success: function (model) {
-					debugger
-					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Created new keyset ' + model.attributes.title +'!</div>'))
-				}, error: function (model, response) {
-					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>'+ response.responseJSON[0] +'</div>'))
+					ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>Successfully created recording!</div>'))
+				},
+				error: function (model, response) {
+					ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>Could not save recording.</div>'))
 				}
 			}
 		)
 	},
 
 	triggerRecord: function () {
+		var that = this
 		if (this.currentlyRecording) {
 			//stop recording
+			window.clearTimeout(this.timer)
 			this.currentlyRecording = false
 			this.endTime = new Date()
 			$('#recButton').removeClass("Rec");
 			$('#recButton').addClass("notRec");
 		} else {
 			//start recording
+			this.timer = window.setTimeout( function () {
+				if (that.currentlyRecording) {that.triggerRecord()}
+				}, 10000)
 			this.recording = []
 			this.notes = {}
 			this.currentlyRecording = true
@@ -87,7 +96,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 			var now = new Date()
 			var note = this.model.attributes[this.keyCodes[event.keyCode]]
 			var duration = now.getTime() - this.startTime.getTime() - this.notes[note]
-			this.recording.push([note, this.notes[note], duration])
+			this.recording.push(note + ", " + this.notes[note] + ", " + duration)
 		}
 		if (audio && $(audio).data("playing")) {
 			audio.pause()
