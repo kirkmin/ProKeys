@@ -27,7 +27,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 			ProKeys.flashOut($('<div class="flashAlert"><button class="closeFlash">&times;</button>There are no notes to record.</div>'))
 		} else {
 			$("#saveRecording").css("display" , "block")
-			if ($("html").height() > $("#saveRecording").height()) {$("#saveRecording").css("height", $("html").height())}
+			$("body").css("overflow", "hidden")
 		}
 	},
 

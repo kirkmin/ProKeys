@@ -36,23 +36,25 @@ $(document).ready(function(){
   // Modal logic
   $("#nav_grid").on("click", "#logInLink", function() {
     $("#logInModal").css("display", "block")
-    if ($("html").height() > $("#logInModal").height()) {$("#logInModal").css("height", $("html").height())}
+    $("body").css("overflow", "hidden")
     $("#toggle")[0].checked = false
   })
 
   $("#nav_grid").on("click", "#signUpLink", function() {
     $("#signUpModal").css("display", "block")
-    if ($("html").height() > $("#signUpModal").height()) {$("#signUpModal").css("height", $("html").height())}
+    $("body").css("overflow", "hidden")
     $("#toggle")[0].checked = false
   })
 
   $(document).on("click", ".close", function () {
     $(".modal").css("display", "none")
+    $("body").css("overflow", "scroll")
   })
 
   $(window).on("click", function(event) {
     if (event.target.className == "modal") {
       $(".modal").css("display", "none")
+      $("body").css("overflow", "scroll")
     }
   })
 

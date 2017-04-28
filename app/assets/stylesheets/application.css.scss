@@ -47,12 +47,12 @@ img {
 .modal {
     box-sizing: border-box;
     display: none; /* Hidden by default */
-    position: absolute; /* Stay in place */
+    position: fixed; /* Stay in place */
+    overflow-y: auto;
     min-height: 100vh;
     z-index: 10; /* Sit on top */
-    padding: 10vh 10vw 0 10vw; /* Location of the box */
-    left: 0;
-    top: 0;
+    padding: 10vh 10vw; /* Location of the box */
+    top: 0; right: 0; bottom: 0; left: 0;
     width: 100%; /* Full width */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -175,7 +175,7 @@ img {
 
 @media screen and (min-width: 45em) {
     .modal {
-        padding: 20vh 20vw 0 20vw;
+        padding: 20vh 20vw;
     }
 }
 
