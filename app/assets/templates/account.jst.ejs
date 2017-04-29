@@ -38,14 +38,35 @@
 				<span class="close">&times;</span>
 				<h2></h2>
 			</div>
-			<form class="KeysetItemForm">
+			<form class="keysetItemForm">
 		      	<div class="modal-body">
 		      		<input id="editKeysetTitle" placeholder="Title" type="text" autofocus>
-					<button class="Btn" id="edit">Edit!</button>
+					<button class="Btn" id="editKeyset">Edit!</button>
 		      	</div>
 		  		<div class="modal-footer">
-					<button class="Btn" id="customize">Customize!</button>
-					<button class="Btn BtnRed" id="delete">Delete!</button>
+					<button class="Btn" id="customizeKeyset">Customize!</button>
+					<button class="Btn BtnRed" id="deleteKeyset">Delete!</button>
+		        	<button class="close">Close</button>
+		  		</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- modal recording items -->
+	<div class="modal" id="recordingItemModal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h2></h2>
+			</div>
+			<form class="recordingItemForm">
+		      	<div class="modal-body">
+		      		<input id="editRecordingTitle" placeholder="Title" type="text" autofocus>
+					<button class="Btn" id="editRecording">Edit!</button>
+		      	</div>
+		  		<div class="modal-footer">
+					<button class="Btn BtnRed" id="deleteRecording">Delete!</button>
+					<button class="Btn BtnGreen" id="playRecording">Play!</button>
 		        	<button class="close">Close</button>
 		  		</div>
 			</form>

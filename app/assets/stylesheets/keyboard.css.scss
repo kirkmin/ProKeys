@@ -250,16 +250,16 @@ html {
   white-space: nowrap;
 }
 
-.keysetitem.Btn, #newKeyset.Btn {
+.keysetitem.Btn, #newKeyset.Btn, .recordingitem.Btn {
   vertical-align: top;
   text-align: center;
-  width: 100px;
+  width: 150px;
   cursor: pointer;
   padding: .39em .65em;
   margin: 0 .39em;
 }
 
-.keysetBoard {
+.keysetBoard, .recordingBoard {
   overflow: hidden;
 }
 
@@ -291,7 +291,7 @@ html {
   display: block;
 }
 
-.keysetContainer {
+.keysetContainer, .recordings {
   padding-top: .39em;
   height: 55px;
   text-align: left;

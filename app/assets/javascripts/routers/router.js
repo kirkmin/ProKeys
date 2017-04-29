@@ -86,12 +86,16 @@ ProKeys.Routers.Router = Backbone.Router.extend({
       success: function (data) {
         if (data) {
           var keysets = ProKeys.Collections.keysets
+          var recordings = ProKeys.Collections.recordings
           keysets.fetch();
+          recordings.fetch();
 
           this._documentUnbind()
           var view = new ProKeys.Views.Account({
-            collection: keysets
+            collection: keysets,
+            recordings: recordings
           });
+          view.recordings = recordings
 
           this._swapView(view);
         } else {
