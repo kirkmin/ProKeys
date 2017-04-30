@@ -5,7 +5,8 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 		"click .keysetitem" : "setKeyset",
 		"click #recButton" : "triggerRecord",
 		"click #recSave" : "recordModal",
-		"click #createRecording" : "createRecording"
+		"click #createRecording" : "createRecording",
+		"click #playRecording" : "playRecording"
 	},
 
 
@@ -19,6 +20,29 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
 	},
 
+	playRecording: function () {
+		var that = this;
+		_.each(that.recording, function (note) {
+			var attr = note.split(", "),
+				audio = that.audios[that.reverseObject[attr[0]]]
+			setTimeout(function () {
+				audio.play()
+				setTimeout(function () {
+					audio.pause()
+					audio.currentTime = 0
+				}, attr[2])
+			}, attr[1])
+		})
+	},
+
+	makeReverseObject: function () {
+		this.reverseObject = {}
+		var that = this
+		_.each(this.model.attributes, function (value, key) {
+			that.reverseObject[value] = key
+		})
+	},
+
 	recordModal: function () {
 		if (this.currentlyRecording == true) {
 			this.triggerRecord()
@@ -28,6 +52,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 		} else {
 			$("#saveRecording").css("display" , "block")
 			$("body").css("overflow", "hidden")
+			this.makeReverseObject()
 		}
 	},
 
