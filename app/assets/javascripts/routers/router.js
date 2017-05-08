@@ -19,14 +19,14 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   front: function () {
-    this._documentUnbind()
+    ProKeys._documentUnbind()
     var view = new ProKeys.Views.Front();
 
     this._swapView(view);
   },
 
   about: function () {
-    this._documentUnbind()
+    ProKeys._documentUnbind()
     var view = new ProKeys.Views.About();
 
     this._swapView(view);
@@ -41,7 +41,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
           var keyset = id ? keysets.getOrFetch(id) : keysets.getFirst()
           keysets.fetch();
 
-          this._documentUnbind()
+          ProKeys._documentUnbind()
           var view = new ProKeys.Views.Customize({
             collection: keysets,
             model: keyset
@@ -65,7 +65,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
           var keyset = id ? keysets.getOrFetch(id) : keysets.getFirst()
           keysets.fetch();
 
-          this._documentUnbind()
+          ProKeys._documentUnbind()
           var view = new ProKeys.Views.Record({
             collection: keysets,
             model: keyset
@@ -90,7 +90,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
           keysets.fetch();
           recordings.fetch();
 
-          this._documentUnbind()
+          ProKeys._documentUnbind()
           var view = new ProKeys.Views.Account({
             collection: keysets,
             recordings: recordings
@@ -107,7 +107,7 @@ ProKeys.Routers.Router = Backbone.Router.extend({
   },
 
   postIndex: function () {
-    this._documentUnbind()
+    ProKeys._documentUnbind()
     var view = new ProKeys.Views.PostIndex();
 
     this._swapView(view);
@@ -118,12 +118,6 @@ ProKeys.Routers.Router = Backbone.Router.extend({
     this.currentView = view;
     this.$rootEl.html(view.render().$el);
   },
-
-  _documentUnbind: function () {
-    $(document).off('mousedown');
-    $(document).off('mousemove');
-    $(document).off('mouseup');
-    $(document).off('keydown');
-    $(document).off('keyup');
-  }
 });
+
+_.extend(ProKeys.Routers.Router.prototype, ProKeys.Utils.listeners);

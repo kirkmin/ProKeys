@@ -3,7 +3,12 @@ ProKeys.Views.Front = Backbone.CompositeView.extend({
 
 	initialize: function () {
 		this.makeAudio();
-	    $(document).on('keydown', _.bind(this.soundOn, this));
+		this.listeners();
+	    $(document).on('modal-close', _.bind(this.listeners, this))
+	},
+
+	listeners: function () {
+		$(document).on('keydown', _.bind(this.soundOn, this));
 	    $(document).on('keyup', _.bind(this.soundOff, this));
 	},
 

@@ -23,6 +23,14 @@ window.ProKeys = {
       , 10000
     );
   },
+
+  _documentUnbind: function () {
+    $(document).off('mousedown');
+    $(document).off('mousemove');
+    $(document).off('mouseup');
+    $(document).off('keydown');
+    $(document).off('keyup');
+  }
 };
 
 $(document).ready(function(){
@@ -38,23 +46,27 @@ $(document).ready(function(){
     $("#logInModal").css("display", "block")
     $("body").css("overflow", "hidden")
     $("#toggle")[0].checked = false
+    ProKeys._documentUnbind()
   })
 
   $("#nav_grid").on("click", "#signUpLink", function() {
     $("#signUpModal").css("display", "block")
     $("body").css("overflow", "hidden")
     $("#toggle")[0].checked = false
+    ProKeys._documentUnbind()
   })
 
   $(document).on("click", ".close", function () {
     $(".modal").css("display", "none")
     $("body").css("overflow", "scroll")
+    $(document).trigger('modal-close');
   })
 
   $(window).on("click", function(event) {
     if (event.target.className == "modal") {
       $(".modal").css("display", "none")
       $("body").css("overflow", "scroll")
+      $(document).trigger('modal-close');
     }
   })
 

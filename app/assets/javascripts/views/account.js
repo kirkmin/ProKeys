@@ -15,23 +15,36 @@ ProKeys.Views.Account = Backbone.CompositeView.extend({
 	},
 
 	initialize: function (options) {
+		this.timeouts = []
 		this.recordings = options.recordings
 		this.listenTo(this.recordings, 'sync remove', this.render)
 		this.listenTo(this.collection, 'sync add remove', this.render)
+		$(document).on("modal-close", _.bind(this.turnOffRecording, this))
+	},
+
+	turnOffRecording: function () {
+		var that = this;
+		_.each(that.timeouts, function (timeout) {
+			clearTimeout(timeout)
+		})
+		this.timeouts = []
 	},
 
 	playRecording: function (e) {
-		var that = this;
+		var that = this
+		this.turnOffRecording()
 		_.each(that.recording.notes().models, function (note) {
 			var attr = note.attributes,
 				audio = that.audios[attr.pitch]
-			setTimeout(function () {
-				audio.play()
+			that.timeouts.push(
 				setTimeout(function () {
-					audio.pause()
-					audio.currentTime = 0
-				}, attr.duration)
-			}, attr.start)
+					audio.play()
+					setTimeout(function () {
+						audio.pause()
+						audio.currentTime = 0
+					}, attr.duration)
+				}, attr.start)
+			)
 		})
 	},
 

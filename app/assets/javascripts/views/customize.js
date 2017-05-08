@@ -11,14 +11,19 @@ ProKeys.Views.Customize = Backbone.CompositeView.extend({
 		this.piano = new ProKeys.Views.Piano()
 		this.addSubview("#keyboard", this.keyboard)
 		this.addSubview("#piano", this.piano)
+		this.listeners()
+		this.listenTo(this.collection, 'sync', this.render)
+		this.listenTo(this.model, 'sync', this.render)
+		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
+		$(document).on('modal-close', _.bind(this.listeners, this))
+	},
+
+	listeners: function () {
 		$(document).on('mousedown', _.bind(this.getPiano, this));
 		$(document).on('mousemove', _.bind(this.moveNote, this));
 		$(document).on('mouseup', _.bind(this.setKeyboard, this));
 	    $(document).on('keydown', _.bind(this.keyDown, this));
 	    $(document).on('keyup', _.bind(this.keyUp, this));
-		this.listenTo(this.collection, 'sync', this.render)
-		this.listenTo(this.model, 'sync', this.render)
-		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
 	},
 
 	keyDown: function (event) {

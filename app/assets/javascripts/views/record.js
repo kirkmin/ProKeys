@@ -13,11 +13,27 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 	initialize: function () {
 		this.currentlyRecording = false
 		this.keyboard = new ProKeys.Views.Keyboard()
-	    $(document).on('keydown', _.bind(this.keyDown, this));
-	    $(document).on('keyup', _.bind(this.keyUp, this));
+		this.listeners()
+		this.timeouts = []
 		this.listenTo(this.collection, 'sync', this.render)
 		this.listenTo(this.model, 'sync', this.render)
 		this.listenTo(this.model, 'sync', this.keyboard.setNewKey)
+		$(document).on("modal-close", _.bind(this.turnOffRecording, this))
+		$(document).on("modal-close", _.bind(this.listeners, this))
+	},
+
+	turnOffRecording: function () {
+		var that = this;
+		_.each(that.timeouts, function (timeout) {
+			clearTimeout(timeout)
+		})
+		this.timeouts = []
+		this.listeners()
+	},
+
+	listeners: function () {
+		$(document).on('keydown', _.bind(this.keyDown, this));
+	    $(document).on('keyup', _.bind(this.keyUp, this));
 	},
 
 	playRecording: function () {
@@ -25,13 +41,15 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 		_.each(that.recording, function (note) {
 			var attr = note.split(", "),
 				audio = that.audios[that.reverseObject[attr[0]]]
-			setTimeout(function () {
-				audio.play()
+			that.timeouts.push(
 				setTimeout(function () {
-					audio.pause()
-					audio.currentTime = 0
-				}, attr[2])
-			}, attr[1])
+					audio.play()
+					setTimeout(function () {
+						audio.pause()
+						audio.currentTime = 0
+					}, attr[2])
+				}, attr[1])
+			)
 		})
 	},
 
@@ -53,6 +71,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 			$("#saveRecording").css("display" , "block")
 			$("body").css("overflow", "hidden")
 			this.makeReverseObject()
+			ProKeys._documentUnbind()
 		}
 	},
 
@@ -89,7 +108,7 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 			//start recording
 			this.timer = window.setTimeout( function () {
 				if (that.currentlyRecording) {that.triggerRecord()}
-				}, 10000)
+				}, 180000)
 			this.recording = []
 			this.notes = {}
 			this.currentlyRecording = true

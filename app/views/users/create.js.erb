@@ -1,6 +1,4 @@
 <% if @user.errors.empty? %>
-	ProKeys.currentUserId = <%= @user.id %>
-	$(document).trigger('log-in');
 	$("#nav_grid").html("<%= escape_javascript(render partial: 'layouts/navbar') %>");
 	ProKeys.flashOut($('<div class="flashSuccess"><button class="closeFlash">&times;</button>You have successfully created your account!</div>'))
 <% else %>
@@ -8,3 +6,4 @@
 	ProKeys.flashOut($("<%= escape_javascript(render partial: 'layouts/error') %>"))
 <% end %>
 $("body").css("overflow", "scroll")
+$(document).trigger('modal-close');
