@@ -121,8 +121,9 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 	keyDown: function (event) {
 		var audio = this.audios[this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode]]
 		if (audio && !$(audio).data("playing") && this.currentlyRecording) {
-			var now = new Date()
-			var note = this.model.attributes[this.keyCodes[event.keyCode]]
+			var now = new Date(),
+				key = this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode],
+				note = this.model.attributes[key]
 			this.notes[note] = now.getTime() - this.startTime.getTime()
 		}
 		if (audio && !$(audio).data("playing")) {
@@ -137,9 +138,10 @@ ProKeys.Views.Record = Backbone.CompositeView.extend({
 	keyUp: function (event) {
 		var audio = this.audios[this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode]]
 		if (audio && $(audio).data("playing") && this.currentlyRecording) {
-			var now = new Date()
-			var note = this.model.attributes[this.keyCodes[event.keyCode]]
-			var duration = now.getTime() - this.startTime.getTime() - this.notes[note]
+			var now = new Date(),
+				key = this.symbols[this.keyCodes[event.keyCode]] || this.keyCodes[event.keyCode],
+				note = this.model.attributes[key],
+				duration = now.getTime() - this.startTime.getTime() - this.notes[note]
 			this.recording.push(note + ", " + this.notes[note] + ", " + duration)
 		}
 		if (audio && $(audio).data("playing")) {
